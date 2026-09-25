@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Budapesti programok</title>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.21/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.21/locales/hu.global.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  /* Leaflet 1.9.4 (BSD-2-Clause), inlined because published pages can't load external stylesheets */
+  .leaflet-image-layer,.leaflet-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane,.leaflet-pane>canvas,.leaflet-pane>svg,.leaflet-tile,.leaflet-tile-container,.leaflet-zoom-box{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:0 0}.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast}.leaflet-safari .leaflet-tile-container{width:1600px;height:1600px;-webkit-transform-origin:0 0}.leaflet-marker-icon,.leaflet-marker-shadow{display:block}.leaflet-container .leaflet-overlay-pane svg{max-width:none!important;max-height:none!important}.leaflet-container .leaflet-marker-pane img,.leaflet-container .leaflet-shadow-pane img,.leaflet-container .leaflet-tile,.leaflet-container .leaflet-tile-pane img,.leaflet-container img.leaflet-image-layer{max-width:none!important;max-height:none!important;width:auto;padding:0}.leaflet-container img.leaflet-tile{mix-blend-mode:plus-lighter}.leaflet-container.leaflet-touch-zoom{-ms-touch-action:pan-x pan-y;touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{-ms-touch-action:pinch-zoom;touch-action:none;touch-action:pinch-zoom}.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom{-ms-touch-action:none;touch-action:none}.leaflet-container{-webkit-tap-highlight-color:transparent}.leaflet-container a{-webkit-tap-highlight-color:rgba(51,181,229,.4)}.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;z-index:800}.leaflet-overlay-pane svg{-moz-user-select:none}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}.leaflet-vml-shape{width:1px;height:1px}.lvml{behavior:url(#default#VML);display:inline-block;position:absolute}.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto}.leaflet-bottom,.leaflet-top{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;-webkit-transition:opacity .2s linear;-moz-transition:opacity .2s linear;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0}svg.leaflet-zoom-animated{will-change:transform}.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);-moz-transition:-moz-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}.leaflet-pan-anim .leaflet-tile,.leaflet-zoom-anim .leaflet-tile{-webkit-transition:none;-moz-transition:none;transition:none}.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:-webkit-grab;cursor:-moz-grab;cursor:grab}.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair}.leaflet-control,.leaflet-popup-pane{cursor:auto}.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:-moz-grabbing;cursor:grabbing}.leaflet-image-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-image-layer.leaflet-interactive,.leaflet-marker-icon.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto}.leaflet-container{background:#ddd;outline-offset:1px}.leaflet-container a{color:#0078a8}.leaflet-zoom-box{border:2px dotted #38f;background:rgba(255,255,255,.5)}.leaflet-container{font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:12px;font-size:.75rem;line-height:1.5}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}.leaflet-bar a{background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#000}.leaflet-bar a,.leaflet-control-layers-toggle{background-position:50% 50%;background-repeat:no-repeat;display:block}.leaflet-bar a:focus,.leaflet-bar a:hover{background-color:#f4f4f4}.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}.leaflet-bar a.leaflet-disabled{cursor:default;background-color:#f4f4f4;color:#bbb}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}.leaflet-touch .leaflet-bar a:first-child{border-top-left-radius:2px;border-top-right-radius:2px}.leaflet-touch .leaflet-bar a:last-child{border-bottom-left-radius:2px;border-bottom-right-radius:2px}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;text-indent:1px}.leaflet-touch .leaflet-control-zoom-in,.leaflet-touch .leaflet-control-zoom-out{font-size:22px}.leaflet-control-layers{box-shadow:0 1px 5px rgba(0,0,0,.4);background:#fff;border-radius:5px}.leaflet-control-layers-toggle{background-image:url(images/layers.png);width:36px;height:36px}.leaflet-retina .leaflet-control-layers-toggle{background-image:url(images/layers-2x.png);background-size:26px 26px}.leaflet-touch .leaflet-control-layers-toggle{width:44px;height:44px}.leaflet-control-layers .leaflet-control-layers-list,.leaflet-control-layers-expanded .leaflet-control-layers-toggle{display:none}.leaflet-control-layers-expanded .leaflet-control-layers-list{display:block;position:relative}.leaflet-control-layers-expanded{padding:6px 10px 6px 6px;color:#333;background:#fff}.leaflet-control-layers-scrollbar{overflow-y:scroll;overflow-x:hidden;padding-right:5px}.leaflet-control-layers-selector{margin-top:2px;position:relative;top:1px}.leaflet-control-layers label{display:block;font-size:13px;font-size:1.08333em}.leaflet-control-layers-separator{height:0;border-top:1px solid #ddd;margin:5px -10px 5px -6px}.leaflet-default-icon-path{background-image:url(images/marker-icon.png)}.leaflet-container .leaflet-control-attribution{background:#fff;background:rgba(255,255,255,.8);margin:0}.leaflet-control-attribution,.leaflet-control-scale-line{padding:0 5px;color:#333;line-height:1.4}.leaflet-control-attribution a{text-decoration:none}.leaflet-control-attribution a:focus,.leaflet-control-attribution a:hover{text-decoration:underline}.leaflet-attribution-flag{display:inline!important;vertical-align:baseline!important;width:1em;height:.6669em}.leaflet-left .leaflet-control-scale{margin-left:5px}.leaflet-bottom .leaflet-control-scale{margin-bottom:5px}.leaflet-control-scale-line{border:2px solid #777;border-top:none;line-height:1.1;padding:2px 5px 1px;white-space:nowrap;-moz-box-sizing:border-box;box-sizing:border-box;background:rgba(255,255,255,.8);text-shadow:1px 1px #fff}.leaflet-control-scale-line:not(:first-child){border-top:2px solid #777;border-bottom:none;margin-top:-2px}.leaflet-control-scale-line:not(:first-child):not(:last-child){border-bottom:2px solid #777}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-attribution,.leaflet-touch .leaflet-control-layers{box-shadow:none}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-layers{border:2px solid rgba(0,0,0,.2);background-clip:padding-box}.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:12px}.leaflet-popup-content{margin:13px 24px 13px 20px;line-height:1.3;font-size:13px;font-size:1.08333em;min-height:1px}.leaflet-popup-content p{margin:17px 0;margin:1.3em 0}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;pointer-events:auto;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#fff;color:#333;box-shadow:0 3px 14px rgba(0,0,0,.4)}.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;text-align:center;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:#757575;text-decoration:none;background:0 0}.leaflet-container a.leaflet-popup-close-button:focus,.leaflet-container a.leaflet-popup-close-button:hover{color:#585858}.leaflet-popup-scrolled{overflow:auto}.leaflet-oldie .leaflet-popup-content-wrapper{-ms-zoom:1}.leaflet-oldie .leaflet-popup-tip{width:24px;margin:0 auto}.leaflet-oldie .leaflet-control-layers,.leaflet-oldie .leaflet-control-zoom,.leaflet-oldie .leaflet-popup-content-wrapper,.leaflet-oldie .leaflet-popup-tip{border:1px solid #999}.leaflet-div-icon{background:#fff;border:1px solid #666}.leaflet-tooltip{position:absolute;padding:6px;background-color:#fff;border:1px solid #fff;border-radius:3px;color:#222;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4)}.leaflet-tooltip.leaflet-interactive{cursor:pointer;pointer-events:auto}.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before,.leaflet-tooltip-top:before{position:absolute;pointer-events:none;border:6px solid transparent;background:0 0;content:""}.leaflet-tooltip-bottom{margin-top:6px}.leaflet-tooltip-top{margin-top:-6px}.leaflet-tooltip-bottom:before,.leaflet-tooltip-top:before{left:50%;margin-left:-6px}.leaflet-tooltip-top:before{bottom:0;margin-bottom:-12px;border-top-color:#fff}.leaflet-tooltip-bottom:before{top:0;margin-top:-12px;margin-left:-6px;border-bottom-color:#fff}.leaflet-tooltip-left{margin-left:-6px}.leaflet-tooltip-right{margin-left:6px}.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{top:50%;margin-top:-6px}.leaflet-tooltip-left:before{right:0;margin-right:-12px;border-left-color:#fff}.leaflet-tooltip-right:before{left:0;margin-left:-12px;border-right-color:#fff}@media print{.leaflet-control{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+<style>
+  :root {
+    --bg: #f6f5f2; --panel: #ffffff; --text: #1f2328; --muted: #6b6f76; --border: #e3e1dc; --accent: #1d4ed8;
+    --star: #b7791f; --pin: #1d4ed8;
+    --c-music: #2563eb; --c-theater: #b91c1c; --c-film: #7c3aed; --c-exhibition: #0f766e; --c-food-drink: #c2410c;
+    --c-craft: #a16207; --c-talk: #475569; --c-festival: #db2777; --c-other: #6b7280;
+    --today: #fdf6e3; --neutral: #f0efeb; --hover: #f5f4f1; --btn: #3f4550; --btn-hover: #2b3038; --btn-active: #1f2328;
+    --shadow: rgba(0,0,0,.25); --backdrop: rgba(20,20,20,.35);
+    --fc-border-color: var(--border); --fc-page-bg-color: var(--panel); --fc-neutral-bg-color: var(--neutral);
+    --fc-neutral-text-color: var(--muted); --fc-today-bg-color: var(--today); --fc-list-event-hover-bg-color: var(--hover);
+    --fc-button-bg-color: var(--btn); --fc-button-border-color: var(--btn); --fc-button-hover-bg-color: var(--btn-hover);
+    --fc-button-hover-border-color: var(--btn-hover); --fc-button-active-bg-color: var(--btn-active);
+    --fc-button-active-border-color: var(--btn-active);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #15171a; --panel: #1e2125; --text: #e6e7e9; --muted: #9aa0a8; --border: #33373d; --accent: #8fb0ff;
+      --star: #f2c14e; --pin: #6f96ff;
+      --today: #2b2a20; --neutral: #262a2f; --hover: #2a2e34; --btn: #3a3f47; --btn-hover: #474d57; --btn-active: #5b626d;
+      --shadow: rgba(0,0,0,.6); --backdrop: rgba(0,0,0,.55);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #15171a; --panel: #1e2125; --text: #e6e7e9; --muted: #9aa0a8; --border: #33373d; --accent: #8fb0ff;
+    --star: #f2c14e; --pin: #6f96ff;
+    --today: #2b2a20; --neutral: #262a2f; --hover: #2a2e34; --btn: #3a3f47; --btn-hover: #474d57; --btn-active: #5b626d;
+    --shadow: rgba(0,0,0,.6); --backdrop: rgba(0,0,0,.55);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding-inline: 20px; background: var(--bg); color: var(--text); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { padding-block: 14px; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 20px; }
+  header .meta { color: var(--muted); font-size: 13px; }
+  .layout { display: grid; grid-template-columns: 300px minmax(0, 1fr); grid-template-areas: "filters content" "panels content";
+            grid-template-rows: auto 1fr; gap: 16px; padding-block-end: 20px; align-items: start; }
+  .filters { grid-area: filters; } .panels { grid-area: panels; }
+  .content { grid-area: content; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-bottom: 16px; }
+  .content .card, .filters .card { margin: 0; }
+  main.card { padding: 14px 16px; }
+  aside h2, .content h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 8px; }
+  .group { margin-top: 14px; }
+  input[type=search], input[type=date] { padding: 7px 9px; border: 1px solid var(--border); border-radius: 6px; font: inherit;
+    font-size: 14px; background: var(--panel); color: var(--text); }
+  input[type=search] { width: 100%; }
+  .dates { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 13px; color: var(--muted); }
+  .dates input { flex: 1; min-width: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { border: 1px solid var(--border); background: var(--panel); border-radius: 999px; padding: 3px 10px; font: inherit;
+          font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; color: var(--text); }
+  .chip .dot { width: 9px; height: 9px; border-radius: 50%; }
+  .chip.on { background: var(--text); border-color: var(--text); color: var(--panel); }
+  .chip .n { color: var(--muted); font-size: 12px; } .chip.on .n { color: var(--panel); opacity: .75; }
+  .star { color: var(--star); }
+  .chip.on .star { color: inherit; }
+  details summary { cursor: pointer; font-size: 14px; }
+  .venues { max-height: 260px; overflow-y: auto; margin-top: 6px; }
+  .venues label { display: flex; gap: 8px; font-size: 14px; padding: 2px 0; cursor: pointer; }
+  .venues .n { color: var(--muted); margin-left: auto; }
+  .row { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-size: 13px; color: var(--muted); }
+  button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  button.link { background: none; border: 0; color: var(--accent); cursor: pointer; font: inherit; padding: 0; }
+  ul.list { list-style: none; margin: 0; padding: 0; }
+  ul.list li { padding: 7px 0; border-top: 1px solid var(--border); font-size: 14px; }
+  ul.list li:first-child { border-top: 0; }
+  ul.list .t { cursor: pointer; font-weight: 600; } ul.list .t:hover { text-decoration: underline; }
+  ul.list .s { color: var(--muted); font-size: 13px; display: block; }
+  ul.list a { color: var(--accent); text-decoration: none; } ul.list a:hover { text-decoration: underline; }
+  .empty { color: var(--muted); font-size: 13px; }
+  /* Featured strip */
+  .strip { display: flex; gap: 10px; overflow-x: auto; padding-block-end: 4px; scroll-snap-type: x proximity; }
+  .fcard { flex: 0 0 210px; scroll-snap-align: start; border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px;
+           background: var(--panel); color: var(--text); text-align: left; font: inherit; cursor: pointer; display: flex;
+           flex-direction: column; gap: 3px; }
+  .fcard:hover { border-color: var(--star); }
+  .fcard .w { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .fcard .t { font-weight: 600; font-size: 14px; line-height: 1.3; display: -webkit-box; -webkit-box-orient: vertical;
+              -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+  .fcard .v { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+  .fcard .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  /* View tabs */
+  .tabs { display: flex; gap: 4px; margin-bottom: 12px; }
+  .tab { border: 1px solid var(--border); background: var(--panel); color: var(--text); font: inherit; font-size: 14px;
+         padding: 5px 14px; border-radius: 6px; cursor: pointer; }
+  .tab[aria-selected="true"] { background: var(--btn-active); border-color: var(--btn-active); color: #fff; }
+  /* Map */
+  #map { height: 600px; border-radius: 8px; border: 1px solid var(--border); }
+  .map-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 14px; margin-top: 8px; font-size: 13px; color: var(--muted); }
+  .map-foot .key { display: inline-flex; align-items: center; gap: 5px; }
+  .map-foot .key i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .map-note { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+  .leaflet-container { background: var(--neutral); font: inherit; }
+  .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--panel); color: var(--text); box-shadow: 0 4px 18px var(--shadow); }
+  .leaflet-popup-content { margin: 10px 12px; font-size: 13px; line-height: 1.4; }
+  .leaflet-container a.leaflet-popup-close-button { color: var(--muted); }
+  .leaflet-bar a, .leaflet-bar a:hover { background: var(--panel); color: var(--text); border-color: var(--border); }
+  .leaflet-control-attribution { background: var(--panel) !important; color: var(--muted); }
+  .leaflet-control-attribution a { color: var(--accent); }
+  .pop h4 { margin: 0 0 2px; font-size: 14px; }
+  .pop .sub { color: var(--muted); margin-bottom: 6px; }
+  .pop ul { list-style: none; margin: 0; padding: 0; max-height: 230px; overflow-y: auto; }
+  .pop li { padding: 4px 0; border-top: 1px solid var(--border); cursor: pointer; }
+  .pop li:first-child { border-top: 0; }
+  .pop li:hover .pt { text-decoration: underline; }
+  .pop .pw { color: var(--muted); font-variant-numeric: tabular-nums; display: block; font-size: 12px; }
+  .pop .pt { font-weight: 600; }
+  /* Calendar */
+  .fc .fc-toolbar-title { font-size: 18px; }
+  .fc .fc-event { cursor: pointer; }
+  .fc .fc-daygrid-dot-event { align-items: baseline; }
+  .fc .fc-daygrid-dot-event .fc-event-title { white-space: normal; overflow-wrap: break-word; font-weight: 600; font-size: 12px;
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+  .fc .fc-list-event .venue { color: var(--muted); font-weight: normal; }
+  .fc .fc-list-event .sum { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+  dialog { border: 0; border-radius: 12px; padding: 0; width: min(560px, calc(100vw - 32px)); box-shadow: 0 10px 40px var(--shadow);
+           background: var(--panel); color: var(--text); }
+  dialog::backdrop { background: var(--backdrop, rgba(20,20,20,.35)); }  /* older browsers: ::backdrop sees no :root vars */
+  dialog .body { padding: 20px 22px; }
+  dialog h3 { margin: 0 0 4px; font-size: 19px; }
+  dialog .when { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+  dialog .why { font-style: italic; margin: 10px 0; }
+  dialog dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 12px 0; font-size: 14px; }
+  dialog dt { color: var(--muted); }
+  dialog dd { margin: 0; }
+  dialog .actions { display: flex; justify-content: space-between; align-items: center; padding: 12px 22px; border-top: 1px solid var(--border); }
+  dialog .open { background: var(--text); color: var(--panel); padding: 7px 14px; border-radius: 6px; text-decoration: none; }
+  .badge { display: inline-block; padding: 1px 8px; border-radius: 999px; color: #fff; font-size: 12px; margin-right: 6px; }
+  .badge.featured { background: var(--star); color: #1f2328; }
+  /* Without JavaScript (phone mail previews, offline) only the plain agenda shows; with it, only the calendar. */
+  html:not(.js) .layout { display: none; }
+  html.js .agenda { display: none; }
+  .agenda { max-width: 760px; padding-block-end: 24px; }
+  .agenda-note { color: var(--muted); font-size: 13px; margin: 0 0 8px; }
+  .agenda h2 { font-size: 15px; margin: 18px 0 6px; padding-block-end: 4px; border-bottom: 1px solid var(--border); }
+  .agenda ul { list-style: none; margin: 0; padding: 0; }
+  .agenda li { padding: 6px 0; }
+  .agenda a { color: var(--accent); font-weight: 600; }
+  .agenda .when { font-variant-numeric: tabular-nums; color: var(--muted); margin-right: 6px; }
+  .agenda .sum { display: block; color: var(--muted); font-size: 13px; }
+  @media (max-width: 820px) {
+    body { padding-inline: 16px; }
+    header { padding-block: 12px; }
+    .layout { grid-template-columns: 1fr; grid-template-areas: "filters" "content" "panels"; padding-block-end: 16px; }
+    main.card { padding: 10px; }
+    #map { height: 65vh; }
+    .fc .fc-toolbar { flex-wrap: wrap; gap: 6px; }
+    .fc .fc-toolbar-title { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Budapesti programok</h1>
+  <span class="meta">Frissítve: 2026-09-25 17:00 · 60 program</span>
+</header>
+<section class="agenda" id="agenda">
+  <p class="agenda-note">A programok egyszerű listája. Böngészőben megnyitva interaktív naptárként és térképként jelenik meg.</p>
+  
+  
+  <h2>★ Kiemelt programok</h2>
+  <ul>
+    
+    <li><span class="when">, 20:00</span>
+      <a href="https://zenehaza.hu/esemeny/cantes-malditos-pedro-de-dios-antonio-fernadez-esp">Cantes Malditos – Pedro de Dios &amp; Antonio Fernandez (ESP)</a> · Magyar Zene Háza</li>
+    
+    <li><span class="when">, 19:30</span>
+      <a href="https://zenehaza.hu/esemeny/gal-de-paz-abate-berihun-the-addis-ken-project-isr">Gal De Paz | Abate Berihun &amp; The Addis Ken Project (ISR)</a> · Magyar Zene Háza</li>
+    
+    <li><span class="when">, 19:00</span>
+      <a href="https://zenehaza.hu/esemeny/kerekes-band-30-vadhajtas">Kerekes Band 30: Vadhajtás</a> · Magyar Zene Háza</li>
+    
+    <li><span class="when">, 19:30</span>
+      <a href="https://zenehaza.hu/esemeny/harcsa-veronika-nora-thiele-vancso-zoltan">Harcsa Veronika - Nora Thiele - Vancsó Zoltán</a> · Magyar Zene Háza</li>
+    
+    <li><span class="when">, 19:30</span>
+      <a href="https://zenehaza.hu/esemeny/bab-l-bluz-mar">Bab L&#39; Bluz (MAR)</a> · Magyar Zene Háza</li>
+    
+    <li><span class="when">, 20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/yemen-blues">Yemen Blues (IL/US/UY)</a> · Opus Jazz Club (BMC)</li>
+    
+    <li><span class="when">, 20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/qiyan-2610">Qiyan</a> · Opus Jazz Club (BMC)</li>
+    
+    <li><span class="when">, 20:00</span>
+      <a href="https://zenehaza.hu/esemeny/los-piranas-col-szode">Los Piranas (COL) | Szodé</a> · Magyar Zene Háza</li>
+    
+    <li><span class="when">, 20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/tom-bourgeois-quartet-feat-courtois-harcsa-lili-frbehu">Tom Bourgeois Quartet feat. Courtois &amp; Harcsa: Lili (FR/BE/HU)</a> · Opus Jazz Club (BMC)</li>
+    
+    <li><span class="when">, 19:00</span>
+      <a href="https://zenehaza.hu/esemeny/duka-elemer-gipsy-chamber-orchestra-jakab-roland-codrut-ionescu-gogan-gabriel-rom">Duka Elemér &amp; Gipsy Chamber Orchestra | Jakab Roland, Codruț Ionescu, Gogan Gabriel (ROM)</a> · Magyar Zene Háza</li>
+    
+  </ul>
+  
+  
+  <h2>2026. szeptember 25., péntek</h2>
+  <ul>
+    
+    <li><span class="when">13:00</span>
+      <a href="https://zenehaza.hu/esemeny/15-eves-a-jazzaj-1">15 éves a JazzaJ</a> · Magyar Zene Háza
+      <span class="sum">Programme marking 15 years of JazzaJ, with jazz, experimental and contemporary music in several spaces of the House.</span></li>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/orbay-lilla-2026">Orbay Lilla</a> · Opus Jazz Club (BMC)
+      <span class="sum">Young Hungarian singer, composer and pianist Orbay Lilla and her band play melodic, atmospheric 1970s-inspired jazz with modern arrangements; they have played EuroJazz Mexico City and Amersfoort World Jazz.</span></li>
+    
+  </ul>
+  
+  <h2>2026. szeptember 26., szombat</h2>
+  <ul>
+    
+    <li><span class="when">16:00</span>
+      <a href="https://zenehaza.hu/esemeny/le-a-kalappal-danko-balint">Le a kalappal! – Dankó Bálint</a> · Magyar Zene Háza
+      <span class="sum">Free open-air street-music gig by Dankó Bálint around the House, in the &#39;Utcazene a szabadban&#39; (Street music outdoors) series; listed as traditional/world music.</span></li>
+    
+    <li><span class="when">16:00</span>
+      <a href="https://zenehaza.hu/esemeny/blue-sun-showcase-shakar-trio-hanussen-kozmo-d-gnork-vava-b2b-azami">Blue Sun Showcase: Shakar Trio, Hanussen &amp; Kozmo D, Gnork (live), Vava b2b Azami</a> · Magyar Zene Háza
+      <span class="sum">Free open-air showcase on the outdoor stage with Shakar Trio, Hanussen &amp; Kozmo D, Gnork (live) and a Vava b2b Azami DJ set; listed as jazz, electronic and DJ music.</span></li>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/coltrane-legacy-2609">Coltrane Legacy: The 100th Birthday</a> · Opus Jazz Club (BMC)
+      <span class="sum">Bassist Orbán György&#39;s six-piece Coltrane Legacy marks Coltrane&#39;s 100th birthday with original pieces and new arrangements of Coltrane themes in the spiritual-jazz tradition.</span></li>
+    
+  </ul>
+  
+  <h2>2026. szeptember 27., vasárnap</h2>
+  <ul>
+    
+    <li><span class="when">15:00</span>
+      <a href="https://zenehaza.hu/esemeny/dome-021-platon-karataev-napkotozo">DOME_021 Platon Karataev: Napkötöző</a> · Magyar Zene Háza
+      <span class="sum">Platon Karataev&#39;s &#39;Napkötöző&#39; in the Hangdóm, the House&#39;s sound dome; listed as a pop concert.</span></li>
+    
+  </ul>
+  
+  <h2>2026. szeptember 30., szerda</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/ratko-zjaca-triology-2026">Ratko Zjaca Triology (HR/CU/AT)</a> · Opus Jazz Club (BMC)
+      <span class="sum">Croatian guitarist Ratko Zjaca&#39;s new trio with Cuban-born bassist Roland Abreu and Austrian drummer Klemens Marktl plays original modern jazz with world-fusion touches.</span></li>
+    
+    <li><span class="when">20:00</span>
+      <span class="star">★</span> <a href="https://zenehaza.hu/esemeny/cantes-malditos-pedro-de-dios-antonio-fernadez-esp">Cantes Malditos – Pedro de Dios &amp; Antonio Fernandez (ESP)</a> · Magyar Zene Háza
+      <span class="sum">Spanish duo Pedro de Dios and Antonio Fernandez on the outdoor stage; listed as traditional/world music and blues.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 1., csütörtök</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/jazz-pongracz-moriel-kranabetter-popp-nothing-causes-anything-at">j(A)zz! | Pongrácz – Moriel – Kranabetter – Popp: Nothing Causes Anything (AT)</a> · Opus Jazz Club (BMC)
+      <span class="sum">Austrian quartet founded by Austrian Jazz Prize winners Yvonne Moriel and Vincent Pongrácz, playing experimental noise jazz driven by free improvisation.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 2., péntek</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/bacso-kristof-quartet-2610">Bacsó Kristóf Quartet</a> · Opus Jazz Club (BMC)
+      <span class="sum">Saxophonist Bacsó Kristóf&#39;s quartet plays mostly new compositions blending contemporary jazz, Hungarian folk heritage and contemporary classical music, plus pieces from his album Let It Go.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 3., szombat</h2>
+  <ul>
+    
+    <li><span class="when">10:15</span>
+      <a href="https://mng.hu/programok/munkacsytol-a-leghajoig-millenniumi-unnepsegek-a-hagyomany-es-a-modernitas-hataran/20261003/">Munkácsytól a léghajóig – Brunch és kurátori vezetés</a> · Magyar Nemzeti Galéria
+      <span class="sum">Brunch and a curator&#39;s tour of the 1896 temporary displays, about the millennium celebrations between tradition and modernity; max 22 people.</span></li>
+    
+    <li><span class="when">10:15</span>
+      <a href="https://mng.hu/programok/alkoss-oszi-levelvarazs/20261003/">Alkoss! – Őszi levélvarázs</a> · Magyar Nemzeti Galéria
+      <span class="sum">Creative workshop for adults and young people over 16 on an autumn-leaf theme; max 15 participants.</span></li>
+    
+    <li><span class="when">19:30</span>
+      <span class="star">★</span> <a href="https://zenehaza.hu/esemeny/gal-de-paz-abate-berihun-the-addis-ken-project-isr">Gal De Paz | Abate Berihun &amp; The Addis Ken Project (ISR)</a> · Magyar Zene Háza
+      <span class="sum">Israeli double bill in the concert hall: Gal De Paz, and Abate Berihun &amp; The Addis Ken Project; listed as world music and pop.</span></li>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/varallyay-petra-2610">Várallyay Petra: Circles in Motion</a> · Opus Jazz Club (BMC)
+      <span class="sum">Solo project by Várallyay Petra built on live looping and choir-like layering, with modal improvisation, Balkan asymmetric rhythms and South Indian Carnatic music.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 4., vasárnap</h2>
+  <ul>
+    
+    <li><span class="when">19:00</span>
+      <span class="star">★</span> <a href="https://zenehaza.hu/esemeny/kerekes-band-30-vadhajtas">Kerekes Band 30: Vadhajtás</a> · Magyar Zene Háza
+      <span class="sum">Kerekes Band&#39;s 30th-anniversary concert &#39;Vadhajtás&#39; in the concert hall; listed as traditional/world music.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 6., kedd</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/mao-legendas-albumok-john-coltrane-100-kenny-burrell-john-coltrane">MAO Legendás Albumok – John Coltrane 100 | Kenny Burrell &amp; John Coltrane</a> · Opus Jazz Club (BMC)
+      <span class="sum">Modern Art Orchestra musicians recreate the Kenny Burrell &amp; John Coltrane album, an intimate guitar–tenor sax dialogue of blues and standards. Part of a four-concert Coltrane centenary series.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 7., szerda</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/miles-davis-100-tribute-fekete-kovacs-middleton-olah-barcza-horvath-eles">Miles Davis 100 Tribute | Fekete-Kovács – Middleton – Oláh – Barcza Horváth – Éles (HU/US)</a> · Opus Jazz Club (BMC)
+      <span class="sum">Hungarian-American quintet marking Miles Davis&#39;s centenary with a contemporary European reinterpretation of his repertoire, focused on collective improvisation and open forms.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 8., csütörtök</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/vive-le-jazz-papanosh-2026">Vive le Jazz | Papanosh (FR)</a> · Opus Jazz Club (BMC)
+      <span class="sum">French quintet Papanosh celebrates its 20th anniversary with the programme &#39;Yes I Are!&#39;, adding mellotron, percussion and flutes from around the world.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 9., péntek</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/vive-le-jazz-nosax-noclar">Vive le Jazz | NoSax NoClar (FR)</a> · Opus Jazz Club (BMC)
+      <span class="sum">French duo mixing modern jazz with Celtic, Turkish, Berber and Armenian traditional music into a trance-like &#39;imaginary folklore&#39;.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 10., szombat</h2>
+  <ul>
+    
+    <li><span class="when">19:30</span>
+      <a href="https://zenehaza.hu/esemeny/muzsa-kollektiva-biro-eszter-labas-viki-es-szirtes-edina-mokus-estje">Múzsa Kollektíva – Bíró Eszter, Lábas Viki és Szirtes Edina Mókus estje</a> · Magyar Zene Háza
+      <span class="sum">Evening of the Múzsa Kollektíva with Bíró Eszter, Lábas Viki and Szirtes Edina Mókus in the concert hall; listed as pop and multi-arts.</span></li>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/vive-le-jazz-charlotte-planchou-didier-ithursarry">Vive le Jazz | Charlotte Planchou &amp; Didier Ithursarry (FR)</a> · Opus Jazz Club (BMC)
+      <span class="sum">Award-winning French singer Charlotte Planchou and accordionist Didier Ithursarry play French chansons (Ferré, Gainsbourg), jazz standards, Latin songs and German cabaret.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 14., szerda</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/sitmob-talas-klausz-2026">Sitmob | Tálas – Klausz</a> · Opus Jazz Club (BMC)
+      <span class="sum">Keyboard–drums duo of Tálas Áron and Klausz Ádám combining hip-hop, funk and drum&#39;n&#39;bass grooves with jazz harmony; the project grew out of busking.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 15., csütörtök</h2>
+  <ul>
+    
+    <li><span class="when">19:30</span>
+      <span class="star">★</span> <a href="https://zenehaza.hu/esemeny/harcsa-veronika-nora-thiele-vancso-zoltan">Harcsa Veronika - Nora Thiele - Vancsó Zoltán</a> · Magyar Zene Háza
+      <span class="sum">Harcsa Veronika performs with Nora Thiele and Vancsó Zoltán in the concert hall; listed as pop.</span></li>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/catalan-jazz-on-tour-blood-quartet">Catalan Jazz On Tour | Blood Quartet (US/CAT)</a> · Opus Jazz Club (BMC)
+      <span class="sum">New York&#39;s Mark Cunningham and three Catalan musicians play dark, improvised music inspired by no wave, jazz noir and free jazz, with effected trumpet and distorted guitar.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 16., péntek</h2>
+  <ul>
+    
+    <li><span class="when">19:30</span>
+      <span class="star">★</span> <a href="https://zenehaza.hu/esemeny/bab-l-bluz-mar">Bab L&#39; Bluz (MAR)</a> · Magyar Zene Háza
+      <span class="sum">Moroccan band Bab L&#39; Bluz in the concert hall; listed as traditional/world music.</span></li>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/skylark-metropolitan">Tóth Viktor Skylark Metropolitan</a> · Opus Jazz Club (BMC)
+      <span class="sum">Newest band of award-winning alto saxophonist Tóth Viktor, playing swing-based modern jazz with broken grooves.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 17., szombat</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <span class="star">★</span> <a href="https://opusjazzclub.hu/koncertek/yemen-blues">Yemen Blues (IL/US/UY)</a> · Opus Jazz Club (BMC)
+      <span class="sum">Multinational quartet mixing Bedouin folklore, funk, blues, Arabic classical music, psychedelia and jazz; presenting their album Only Love Remains.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 20., kedd</h2>
+  <ul>
+    
+    <li><span class="when">19:00</span>
+      <a href="https://zenehaza.hu/esemeny/muzsikusok-kavehaza-elo-ciganyzene-a-trilla-etteremben-3">Muzsikusok kávéháza – Élő cigányzene a Trilla Étteremben</a> · Magyar Zene Háza
+      <span class="sum">Live gypsy music in the House&#39;s Trilla restaurant, part of the &#39;Muzsikusok kávéháza&#39; (Musicians&#39; café) series.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 21., szerda</h2>
+  <ul>
+    
+    <li><span class="when">18:30</span>
+      <a href="https://opusjazzclub.hu/koncertek/mao-meets-the-masters-szabo-illes-meets-pat-metheny-1830">MAO Meets the Masters | Szabó Illés meets Pat Metheny</a> · Opus Jazz Club (BMC)
+      <span class="sum">The Modern Art Orchestra plays Pat Metheny compositions in big-band arrangements by Bob Curnow and guitarist Szabó Illés. Two shows: 18:30 and 21:00.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 22., csütörtök</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/grencso-paradox-four">Grencsó Paradox Four</a> · Opus Jazz Club (BMC)
+      <span class="sum">Free-music veteran Grencsó István with composer-keyboardist Dukay Barnabás, Bolcsó Bálint on electronics and percussionist Miklós Szilveszter, in freely improvised music.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 25., vasárnap</h2>
+  <ul>
+    
+    <li><span class="when">19:00</span>
+      <a href="https://zenehaza.hu/esemeny/balogh-kalman-tobb-huron-pendulunk">Balogh Kálmán: Több húron pendülünk</a> · Magyar Zene Háza
+      <span class="sum">Concert by Balogh Kálmán in the concert hall; listed as traditional/world music.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 27., kedd</h2>
+  <ul>
+    
+    <li><span class="when">19:00</span>
+      <a href="https://zenehaza.hu/esemeny/nyar-leto-2018-vendeg-varga-denes-filmeszteta">Nyár (Leto, 2018) Vendég: Varga Dénes filmesztéta</a> · Magyar Zene Háza
+      <span class="sum">Rock Film Club screening of &#39;Leto&#39; (Nyár, 2018) in the pop-culture club library, with film aesthetician Varga Dénes as guest.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 28., szerda</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/mcphee-swell-tokar-kugel">Mahall – Swell – Tokar – Kugel (US/UA/DE)</a> · Opus Jazz Club (BMC)
+      <span class="sum">Free-jazz quartet of German reedist Rudi Mahall (replacing Joe McPhee), US trombonist Steve Swell, Ukrainian bassist Mark Tokar and German drummer Klaus Kugel.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 29., csütörtök</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <span class="star">★</span> <a href="https://opusjazzclub.hu/koncertek/qiyan-2610">Qiyan</a> · Opus Jazz Club (BMC)
+      <span class="sum">Ajtai Péter&#39;s band builds ethno-jazz on the Jewish-Arab music of the Caliphate of Córdoba (the qiyan singer tradition), with Carpathian Basin influences.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 30., péntek</h2>
+  <ul>
+    
+    <li><span class="when">19:00</span>
+      <a href="https://zenehaza.hu/esemeny/in-pari-tanc-es-zene-2">In Pari – Tánc és Zene #2</a> · Magyar Zene Háza
+      <span class="sum">Second evening of the In Pari dance-and-music series in the lecture hall; listed as dance, crossover and jazz.</span></li>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/new-jazz-from-finland-timo-lassy-trio-fi">New Jazz From Finland | Timo Lassy Trio (FI)</a> · Opus Jazz Club (BMC)
+      <span class="sum">Finnish saxophonist Timo Lassy&#39;s trio (We Jazz Records) plays groove jazz with raw improvisation.</span></li>
+    
+  </ul>
+  
+  <h2>2026. október 31., szombat</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/new-jazz-from-finland-alexi-tuomarila-quartet">New Jazz From Finland | Alexi Tuomarila Quartet (FI/NO)</a> · Opus Jazz Club (BMC)
+      <span class="sum">Finnish pianist Alexi Tuomarila, long-time sideman of Tomasz Stanko, leads a quartet with Bendik Hofseth, Markku Ounaskari and Mikael Saastamoinen in his own compositions.</span></li>
+    
+  </ul>
+  
+  <h2>2026. november 3., kedd</h2>
+  <ul>
+    
+    <li><span class="when">19:30</span>
+      <a href="https://zenehaza.hu/esemeny/sip-es-lant-berecz-andras-gorog-musora">Síp és lant – Berecz András görög műsora</a> · Magyar Zene Háza
+      <span class="sum">Berecz András presents a Greek programme (&#39;Pipe and lute&#39;) in the concert hall; listed as traditional/world music.</span></li>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/mao-legendas-albumok-john-coltrane-100-john-coltrane-standard-coltrane">MAO Legendás Albumok – John Coltrane 100 | John Coltrane: Standard Coltrane</a> · Opus Jazz Club (BMC)
+      <span class="sum">Modern Art Orchestra soloists recreate Coltrane&#39;s Standard Coltrane album, treating the standards as open forms. Part of the Coltrane centenary series.</span></li>
+    
+  </ul>
+  
+  <h2>2026. november 4., szerda</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/negyessy-barnabas-quartet-feat-aved-janos">Négyessy Barnabás Quartet feat. Ávéd János</a> · Opus Jazz Club (BMC)
+      <span class="sum">Négyessy Barnabás&#39;s quartet with guest Ávéd János; details to be announced.</span></li>
+    
+  </ul>
+  
+  <h2>2026. november 7., szombat</h2>
+  <ul>
+    
+    <li><span class="when">10:15</span>
+      <a href="https://mng.hu/programok/alkoss-a-fekete-szin-tortenete/20261107/">Alkoss! – A fekete szín története</a> · Magyar Nemzeti Galéria
+      <span class="sum">Creative workshop for adults and young people over 16 on the history of the colour black; max 15 participants.</span></li>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/szabo-daniel-trio-2611">Szabó Dániel Trió</a> · Opus Jazz Club (BMC)
+      <span class="sum">Szabó Dániel&#39;s trio with Gyányi Marcell and Szabó Dániel Ferenc plays his story-like compositions mixing jazz, Afro-American rhythms and Central-Eastern European classical and folk idioms.</span></li>
+    
+    <li><span class="when">20:00</span>
+      <span class="star">★</span> <a href="https://zenehaza.hu/esemeny/los-piranas-col-szode">Los Piranas (COL) | Szodé</a> · Magyar Zene Háza
+      <span class="sum">Colombian band Los Piranas, with Szodé, in the concert hall; listed as traditional/world and experimental music.</span></li>
+    
+  </ul>
+  
+  <h2>2026. november 11., szerda</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/nemeth-bendeguz-quartet-vendeg-mike-gotthard">Németh Bendegúz Quartet, vendég: Mike Gotthard</a> · Opus Jazz Club (BMC)
+      <span class="sum">Young Budapest fusion quartet (BMC special prize at the 2026 Müpa Jazz Showcase) mixing groove, funk, blues and rock energy with jazz improvisation; guest Mike Gotthard.</span></li>
+    
+  </ul>
+  
+  <h2>2026. november 12., csütörtök</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/polska-jazz-one-quartet-pl">Polska Jazz | O.N.E. Quartet (PL)</a> · Opus Jazz Club (BMC)
+      <span class="sum">Polish jazz quartet in the Polska Jazz series; details to be announced.</span></li>
+    
+  </ul>
+  
+  <h2>2026. november 13., péntek</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/polska-jazz-ninja-episkopat-pl">Polska Jazz | Ninja Episkopat (PL)</a> · Opus Jazz Club (BMC)
+      <span class="sum">Polish band Ninja Episkopat in the Polska Jazz series; details to be announced.</span></li>
+    
+  </ul>
+  
+  <h2>2026. november 14., szombat</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/polska-jazz-masecki-tsalikov-pieniazek-monk-pl">Polska Jazz | Masecki – Tsalikov – Pieniążek: Monk (PL)</a> · Opus Jazz Club (BMC)
+      <span class="sum">Polish trio Masecki, Tsalikov and Pieniążek with a programme titled &#39;Monk&#39; (Polska Jazz series); details to be announced.</span></li>
+    
+  </ul>
+  
+  <h2>2026. november 17., kedd</h2>
+  <ul>
+    
+    <li><span class="when">19:00</span>
+      <a href="https://zenehaza.hu/esemeny/muzsikusok-kavehaza-elo-ciganyzene-a-trilla-etteremben-4">Muzsikusok kávéháza - Élő cigányzene a Trilla Étteremben</a> · Magyar Zene Háza
+      <span class="sum">Live gypsy music in the House&#39;s Trilla restaurant, part of the &#39;Muzsikusok kávéháza&#39; (Musicians&#39; café) series.</span></li>
+    
+    <li><span class="when">19:30</span>
+      <a href="https://zenehaza.hu/esemeny/alela-diane-usa">Alela Diane (USA) | The Hackles (USA)</a> · Magyar Zene Háza
+      <span class="sum">US singer-songwriter Alela Diane, with The Hackles (USA), in the concert hall; listed as pop / singer-songwriter.</span></li>
+    
+  </ul>
+  
+  <h2>2026. november 18., szerda</h2>
+  <ul>
+    
+    <li><span class="when">19:00</span>
+      <a href="https://zenehaza.hu/esemeny/emingo">Emingó</a> · Magyar Zene Háza
+      <span class="sum">Jazz concert by Emingó in the lecture hall.</span></li>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/catalan-jazz-on-tour-clara-lai-trio-cat">Catalan Jazz on Tour | Clara Lai Trio (CAT)</a> · Opus Jazz Club (BMC)
+      <span class="sum">Barcelona-based pianist Clara Lai&#39;s trio with Àlex Reviriego and Oriol Roca: energetic yet contemplative improvised music with aleatoric and noise elements.</span></li>
+    
+  </ul>
+  
+  <h2>2026. november 19., csütörtök</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/borbely-muhely-feat-lew-tabackin-huus">Borbély Műhely, feat. Lew Tabackin (HU/US)</a> · Opus Jazz Club (BMC)
+      <span class="sum">Borbély Műhely with US guest Lew Tabackin; details to be announced.</span></li>
+    
+  </ul>
+  
+  <h2>2026. november 20., péntek</h2>
+  <ul>
+    
+    <li><span class="when">19:00</span>
+      <a href="https://zenehaza.hu/esemeny/moldovai-dallamok-es-ritmusok-ivan-curteannal">Moldovai dallamok és ritmusok Ivan Curteannal</a> · Magyar Zene Háza
+      <span class="sum">Interactive educational session on Moldovan melodies and rhythms with Ivan Curtean, in the Világfalu+ (World Village) series.</span></li>
+    
+    <li><span class="when">20:00</span>
+      <a href="https://opusjazzclub.hu/koncertek/cimbiozis-trio-2611">Lukács Miklós Cimbiózis Trió</a> · Opus Jazz Club (BMC)
+      <span class="sum">Cimbalom virtuoso Lukács Miklós with Orbán György (bass) and Baló István (drums) plays original, chamber-like jazz compositions.</span></li>
+    
+  </ul>
+  
+  <h2>2026. november 21., szombat</h2>
+  <ul>
+    
+    <li><span class="when">20:00</span>
+      <span class="star">★</span> <a href="https://opusjazzclub.hu/koncertek/tom-bourgeois-quartet-feat-courtois-harcsa-lili-frbehu">Tom Bourgeois Quartet feat. Courtois &amp; Harcsa: Lili (FR/BE/HU)</a> · Opus Jazz Club (BMC)
+      <span class="sum">Tom Bourgeois&#39;s Belgium-based quartet gives jazz interpretations of Lili Boulanger&#39;s music, with cellist Vincent Courtois and singer Harcsa Veronika.</span></li>
+    
+  </ul>
+  
+  <h2>2026. november 22., vasárnap</h2>
+  <ul>
+    
+    <li><span class="when">19:00</span>
+      <span class="star">★</span> <a href="https://zenehaza.hu/esemeny/duka-elemer-gipsy-chamber-orchestra-jakab-roland-codrut-ionescu-gogan-gabriel-rom">Duka Elemér &amp; Gipsy Chamber Orchestra | Jakab Roland, Codruț Ionescu, Gogan Gabriel (ROM)</a> · Magyar Zene Háza
+      <span class="sum">Duka Elemér and the Gipsy Chamber Orchestra with guests Jakab Roland, Codruț Ionescu and Gogan Gabriel (Romania); listed as traditional/world music.</span></li>
+    
+  </ul>
+  
+  
+  <h2>Folyamatban</h2>
+  <ul>
+    <li><a href="https://mng.hu/kiallitasok/everything-not-saved-will-be-lost/">Everything Not Saved Will Be Lost</a> · Magyar Nemzeti Galéria · szeptember 27.-ig</li>
+    <li><a href="https://mng.hu/kiallitasok/1896idoszaki-tarlatok-a-19-szazadi-gyujtemenyben/">1896 – Időszaki tárlatok a 19. századi gyűjteményben</a> · Magyar Nemzeti Galéria · november 8.-ig</li>
+    <li><a href="https://mng.hu/kiallitasok/muveszet-es-spiritualitasvalogatas-antoni-tapies-grafikai-muveibol/">Művészet és spiritualitás. Válogatás Antoni Tàpies grafikai műveiből</a> · Magyar Nemzeti Galéria · november 22.-ig</li>
+    <li><a href="https://mng.hu/kiallitasok/elhivatottakmagyar-kepzomuvesznok-a-20-szazad-elso-feleben/">Elhivatottak. Magyar képzőművésznők a 20. század első felében</a> · Magyar Nemzeti Galéria · február 14.-ig</li>
+    
+  </ul>
+  
+  
+  <h2>Nézd meg külön</h2>
+  <ul>
+    <li><a href="https://www.facebook.com/profile.php?id=100063365072457&amp;sk=events">Café Zsivágó</a></li>
+    <li><a href="https://www.facebook.com/profile.php?id=61572563117208&amp;sk=events">Muci – coffee &amp; pastry</a></li>
+    <li><a href="https://www.facebook.com/caphe.hainambudapest/events">Caphe by Hai Nam</a></li>
+    <li><a href="https://www.facebook.com/keletkavezo/events">Kelet Kávézó és Galéria</a></li>
+    <li><a href="https://www.facebook.com/cafecsiga/events">Csiga Café</a></li>
+    <li><a href="https://www.facebook.com/Cintanyeros/events">Cintányéros</a></li>
+    <li><a href="https://www.facebook.com/CCCBudapest/events">Budapesti Kínai Kulturális Központ</a></li>
+    <li><a href="https://www.instagram.com/tuzhely_studio/">Tűzhely Kerámia Stúdió</a></li>
+    <li><a href="https://www.goethe.de/ins/hu/hu/ver.cfm">Goethe-Institut Budapest</a></li>
+    <li><a href="https://instytutpolski.pl/budapest/category/program/">Lengyel Intézet</a></li>
+    
+  </ul>
+  
+</section>
+<div class="layout">
+  <aside class="filters">
+    <details class="card" id="filter-card" open>
+      <summary><h2 style="display:inline">Szűrők</h2></summary>
+      <div class="group"><input type="search" id="q" placeholder="Keresés: cím, leírás, címke…"></div>
+      <div class="group"><h2>Időszak</h2>
+        <div class="chips" id="periods"></div>
+        <div class="dates"><input type="date" id="from" aria-label="Ettől"> – <input type="date" id="to" aria-label="Eddig"></div>
+      </div>
+      <div class="group"><div class="chips"><button class="chip" id="featured-only"><span class="star">★</span> Csak kiemelt <span class="n" id="featured-count"></span></button></div></div>
+      <div class="group"><h2>Kategória</h2><div class="chips" id="cats"></div></div>
+      <div class="group"><h2>Címkék</h2><div class="chips" id="tags"></div></div>
+      <div class="group"><h2>Helyszín</h2>
+        <details><summary>Válassz a listából <span id="venue-count"></span></summary><div class="venues" id="venues"></div></details>
+      </div>
+      <div class="row"><span id="count"></span><button class="link" id="reset">Szűrők törlése</button></div>
+    </details>
+  </aside>
+  <div class="content">
+    <section class="card" id="featured-card">
+      <h2><span class="star">★</span> Kiemelt programok</h2>
+      <div class="strip" id="featured"></div>
+    </section>
+    <main class="card">
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" id="tab-calendar" aria-selected="true">Naptár</button>
+        <button class="tab" role="tab" id="tab-map" aria-selected="false">Térkép</button>
+      </div>
+      <div id="calendar"></div>
+      <div id="map-view" hidden>
+        <p class="map-note" id="map-note" hidden>A térkép háttere itt nem tölthető be; a pontok és a programok így is működnek. A letöltött fájlban vagy a GitHub-os linken a teljes térkép látszik.</p>
+        <div id="map"></div>
+        <div class="map-foot">
+          <span><span class="key"><i style="background:var(--pin)"></i> program</span> &nbsp;
+                <span class="key"><i style="background:var(--star)"></i> kiemelt programmal</span> &nbsp; Vidd fölé az egeret vagy koppints egy pontra.</span>
+          <span id="map-missing"></span>
+        </div>
+      </div>
+    </main>
+  </div>
+  <aside class="panels">
+    <section class="card"><h2>Folyamatban</h2><ul class="list" id="ongoing"></ul></section>
+    <section class="card"><h2>Nézd meg külön</h2><ul class="list" id="manual"></ul></section>
+  </aside>
+</div>
+<dialog id="details">
+  <div class="body">
+    <h3 id="d-title"></h3>
+    <div class="when" id="d-when"></div>
+    <div id="d-summary"></div>
+    <div class="why" id="d-why"></div>
+    <dl id="d-facts"></dl>
+  </div>
+  <div class="actions">
+    <a class="open" id="d-url" target="_blank" rel="noopener">Az esemény oldala ↗</a>
+    <button class="link" id="d-close">Bezárás</button>
+  </div>
+</dialog>
+
+<script id="data" type="application/json">{"events": [{"id": "mng|2026-10-21|elhivatottakmagyarkepzomuvesznoka20szazadelsofeleben", "title": "Elhivatottak. Magyar képzőművésznők a 20. század első felében", "venue": "mng", "venueName": "Magyar Nemzeti Galéria", "category": "exhibition", "tags": ["women-artists", "hungarian-art", "20th-century"], "summary": "Temporary exhibition on Hungarian women artists of the first half of the 20th century.", "why": "Temporary exhibition at the National Gallery", "price": null, "language": null, "url": "https://mng.hu/kiallitasok/elhivatottakmagyar-kepzomuvesznok-a-20-szazad-elso-feleben/", "featured": false, "places": [], "ongoing": true, "startDate": "2026-10-21", "endDate": "2027-02-14", "start": "2026-10-21", "end": "2027-02-15", "allDay": true}, {"id": "mng|2026-09-15|muveszetesspiritualitasvalogatasantonitapiesgrafikaimuveibol", "title": "Művészet és spiritualitás. Válogatás Antoni Tàpies grafikai műveiből", "venue": "mng", "venueName": "Magyar Nemzeti Galéria", "category": "exhibition", "tags": ["graphic-art", "spanish-art", "tapies"], "summary": "A selection of Antoni Tàpies's graphic works on the theme of art and spirituality.", "why": "Temporary exhibition at the National Gallery", "price": null, "language": null, "url": "https://mng.hu/kiallitasok/muveszet-es-spiritualitasvalogatas-antoni-tapies-grafikai-muveibol/", "featured": false, "places": [], "ongoing": true, "startDate": "2026-09-15", "endDate": "2026-11-22", "start": "2026-09-15", "end": "2026-11-23", "allDay": true}, {"id": "mng|2026-06-18|everythingnotsavedwillbelost", "title": "Everything Not Saved Will Be Lost", "venue": "mng", "venueName": "Magyar Nemzeti Galéria", "category": "exhibition", "tags": ["temporary-exhibition"], "summary": "Temporary exhibition at the Hungarian National Gallery in its last days (closes 27 September).", "why": "Temporary exhibition, closing soon", "price": null, "language": null, "url": "https://mng.hu/kiallitasok/everything-not-saved-will-be-lost/", "featured": false, "places": [], "ongoing": true, "startDate": "2026-06-18", "endDate": "2026-09-27", "start": "2026-06-18", "end": "2026-09-28", "allDay": true}, {"id": "mng|2026-03-14|1896idoszakitarlatoka19szazadigyujtemenyben", "title": "1896 – Időszaki tárlatok a 19. századi gyűjteményben", "venue": "mng", "venueName": "Magyar Nemzeti Galéria", "category": "exhibition", "tags": ["19th-century", "hungarian-art", "millennium"], "summary": "Temporary displays within the 19th-century collection recalling the 1896 millennium exhibition.", "why": "Temporary exhibition at the National Gallery", "price": null, "language": null, "url": "https://mng.hu/kiallitasok/1896idoszaki-tarlatok-a-19-szazadi-gyujtemenyben/", "featured": false, "places": [], "ongoing": true, "startDate": "2026-03-14", "endDate": "2026-11-08", "start": "2026-03-14", "end": "2026-11-09", "allDay": true}, {"id": "mng|2026-10-03|munkacsytolaleghajoigbruncheskuratorivezetes", "title": "Munkácsytól a léghajóig – Brunch és kurátori vezetés", "venue": "mng", "venueName": "Magyar Nemzeti Galéria", "category": "talk", "tags": ["curator-tour", "brunch", "19th-century"], "summary": "Brunch and a curator's tour of the 1896 temporary displays, about the millennium celebrations between tradition and modernity; max 22 people.", "why": "Curator's tour of a temporary exhibition, with brunch", "price": null, "language": null, "url": "https://mng.hu/programok/munkacsytol-a-leghajoig-millenniumi-unnepsegek-a-hagyomany-es-a-modernitas-hataran/20261003/", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-03", "endDate": "2026-10-03", "start": "2026-10-03T10:15:00", "allDay": false, "end": "2026-10-03T12:00:00"}, {"id": "mng|2026-10-03|alkossoszilevelvarazs", "title": "Alkoss! – Őszi levélvarázs", "venue": "mng", "venueName": "Magyar Nemzeti Galéria", "category": "craft", "tags": ["workshop", "art", "autumn"], "summary": "Creative workshop for adults and young people over 16 on an autumn-leaf theme; max 15 participants.", "why": "Craft workshop for adults (borderline: monthly Alkoss! series)", "price": null, "language": null, "url": "https://mng.hu/programok/alkoss-oszi-levelvarazs/20261003/", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-03", "endDate": "2026-10-03", "start": "2026-10-03T10:15:00", "allDay": false, "end": "2026-10-03T12:00:00"}, {"id": "mng|2026-11-07|alkossafeketeszintortenete", "title": "Alkoss! – A fekete szín története", "venue": "mng", "venueName": "Magyar Nemzeti Galéria", "category": "craft", "tags": ["workshop", "art", "colour"], "summary": "Creative workshop for adults and young people over 16 on the history of the colour black; max 15 participants.", "why": "Craft workshop for adults (borderline: monthly Alkoss! series)", "price": null, "language": null, "url": "https://mng.hu/programok/alkoss-a-fekete-szin-tortenete/20261107/", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-07", "endDate": "2026-11-07", "start": "2026-11-07T10:15:00", "allDay": false, "end": "2026-11-07T12:00:00"}, {"id": "opus-jazz-club|2026-09-25|orbaylilla", "title": "Orbay Lilla", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "vocal", "hungarian"], "summary": "Young Hungarian singer, composer and pianist Orbay Lilla and her band play melodic, atmospheric 1970s-inspired jazz with modern arrangements; they have played EuroJazz Mexico City and Amersfoort World Jazz.", "why": "Jazz; young Hungarian band", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/orbay-lilla-2026", "featured": false, "places": [], "ongoing": false, "startDate": "2026-09-25", "endDate": "2026-09-25", "start": "2026-09-25T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-09-26|coltranelegacythe100thbirthday", "title": "Coltrane Legacy: The 100th Birthday", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "spiritual-jazz", "coltrane"], "summary": "Bassist Orbán György's six-piece Coltrane Legacy marks Coltrane's 100th birthday with original pieces and new arrangements of Coltrane themes in the spiritual-jazz tradition.", "why": "Jazz; Coltrane centenary", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/coltrane-legacy-2609", "featured": false, "places": [], "ongoing": false, "startDate": "2026-09-26", "endDate": "2026-09-26", "start": "2026-09-26T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-09-30|ratkozjacatriologyhrcuat", "title": "Ratko Zjaca Triology (HR/CU/AT)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "world-fusion", "guitar", "international"], "summary": "Croatian guitarist Ratko Zjaca's new trio with Cuban-born bassist Roland Abreu and Austrian drummer Klemens Marktl plays original modern jazz with world-fusion touches.", "why": "International jazz trio (Croatia/Cuba/Austria)", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/ratko-zjaca-triology-2026", "featured": false, "places": [], "ongoing": false, "startDate": "2026-09-30", "endDate": "2026-09-30", "start": "2026-09-30T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-01|jazzpongraczmorielkranabetterpoppnothingcausesanythingat", "title": "j(A)zz! | Pongrácz – Moriel – Kranabetter – Popp: Nothing Causes Anything (AT)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "free-improvisation", "experimental", "austrian"], "summary": "Austrian quartet founded by Austrian Jazz Prize winners Yvonne Moriel and Vincent Pongrácz, playing experimental noise jazz driven by free improvisation.", "why": "Experimental jazz from Austria", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/jazz-pongracz-moriel-kranabetter-popp-nothing-causes-anything-at", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-01", "endDate": "2026-10-01", "start": "2026-10-01T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-02|bacsokristofquartet", "title": "Bacsó Kristóf Quartet", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "saxophone", "hungarian"], "summary": "Saxophonist Bacsó Kristóf's quartet plays mostly new compositions blending contemporary jazz, Hungarian folk heritage and contemporary classical music, plus pieces from his album Let It Go.", "why": "Jazz", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/bacso-kristof-quartet-2610", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-02", "endDate": "2026-10-02", "start": "2026-10-02T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-03|varallyaypetracirclesinmotion", "title": "Várallyay Petra: Circles in Motion", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "live-looping", "carnatic", "balkan"], "summary": "Solo project by Várallyay Petra built on live looping and choir-like layering, with modal improvisation, Balkan asymmetric rhythms and South Indian Carnatic music.", "why": "Unusual jazz solo project with Indian and Balkan influences", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/varallyay-petra-2610", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-03", "endDate": "2026-10-03", "start": "2026-10-03T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-06|maolegendasalbumokjohncoltrane100kennyburrelljohncoltrane", "title": "MAO Legendás Albumok – John Coltrane 100 | Kenny Burrell & John Coltrane", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "coltrane", "tribute"], "summary": "Modern Art Orchestra musicians recreate the Kenny Burrell & John Coltrane album, an intimate guitar–tenor sax dialogue of blues and standards. Part of a four-concert Coltrane centenary series.", "why": "Jazz; Coltrane centenary series", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/mao-legendas-albumok-john-coltrane-100-kenny-burrell-john-coltrane", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-06", "endDate": "2026-10-06", "start": "2026-10-06T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-07|milesdavis100tributefeketekovacsmiddletonolahbarczahorvatheleshuus", "title": "Miles Davis 100 Tribute | Fekete-Kovács – Middleton – Oláh – Barcza Horváth – Éles (HU/US)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "miles-davis", "tribute"], "summary": "Hungarian-American quintet marking Miles Davis's centenary with a contemporary European reinterpretation of his repertoire, focused on collective improvisation and open forms.", "why": "Jazz; Miles Davis centenary", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/miles-davis-100-tribute-fekete-kovacs-middleton-olah-barcza-horvath-eles", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-07", "endDate": "2026-10-07", "start": "2026-10-07T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-08|vivelejazzpapanoshfr", "title": "Vive le Jazz | Papanosh (FR)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "french"], "summary": "French quintet Papanosh celebrates its 20th anniversary with the programme 'Yes I Are!', adding mellotron, percussion and flutes from around the world.", "why": "French jazz band (Vive le Jazz series)", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/vive-le-jazz-papanosh-2026", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-08", "endDate": "2026-10-08", "start": "2026-10-08T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-09|vivelejazznosaxnoclarfr", "title": "Vive le Jazz | NoSax NoClar (FR)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "world-music", "french", "duo"], "summary": "French duo mixing modern jazz with Celtic, Turkish, Berber and Armenian traditional music into a trance-like 'imaginary folklore'.", "why": "French jazz/world duo drawing on foreign folk traditions", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/vive-le-jazz-nosax-noclar", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-09", "endDate": "2026-10-09", "start": "2026-10-09T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-10|vivelejazzcharlotteplanchoudidierithursarryfr", "title": "Vive le Jazz | Charlotte Planchou & Didier Ithursarry (FR)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "chanson", "accordion", "french"], "summary": "Award-winning French singer Charlotte Planchou and accordionist Didier Ithursarry play French chansons (Ferré, Gainsbourg), jazz standards, Latin songs and German cabaret.", "why": "French vocal jazz duo with accordion", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/vive-le-jazz-charlotte-planchou-didier-ithursarry", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-10", "endDate": "2026-10-10", "start": "2026-10-10T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-14|sitmobtalasklausz", "title": "Sitmob | Tálas – Klausz", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "groove", "duo", "hungarian"], "summary": "Keyboard–drums duo of Tálas Áron and Klausz Ádám combining hip-hop, funk and drum'n'bass grooves with jazz harmony; the project grew out of busking.", "why": "Jazz-groove duo; small band", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/sitmob-talas-klausz-2026", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-14", "endDate": "2026-10-14", "start": "2026-10-14T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-15|catalanjazzontourbloodquartetuscat", "title": "Catalan Jazz On Tour | Blood Quartet (US/CAT)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "free-jazz", "jazz-noir", "catalan"], "summary": "New York's Mark Cunningham and three Catalan musicians play dark, improvised music inspired by no wave, jazz noir and free jazz, with effected trumpet and distorted guitar.", "why": "Rare US/Catalan avant-jazz act", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/catalan-jazz-on-tour-blood-quartet", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-15", "endDate": "2026-10-15", "start": "2026-10-15T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-16|tothviktorskylarkmetropolitan", "title": "Tóth Viktor Skylark Metropolitan", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "saxophone", "hungarian"], "summary": "Newest band of award-winning alto saxophonist Tóth Viktor, playing swing-based modern jazz with broken grooves.", "why": "Jazz", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/skylark-metropolitan", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-16", "endDate": "2026-10-16", "start": "2026-10-16T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-17|yemenbluesilusuy", "title": "Yemen Blues (IL/US/UY)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["world-music", "blues", "jazz", "middle-eastern"], "summary": "Multinational quartet mixing Bedouin folklore, funk, blues, Arabic classical music, psychedelia and jazz; presenting their album Only Love Remains.", "why": "Rare world/blues act from abroad", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/yemen-blues", "featured": true, "places": [], "ongoing": false, "startDate": "2026-10-17", "endDate": "2026-10-17", "start": "2026-10-17T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-21|maomeetsthemastersszaboillesmeetspatmetheny", "title": "MAO Meets the Masters | Szabó Illés meets Pat Metheny", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "big-band", "pat-metheny"], "summary": "The Modern Art Orchestra plays Pat Metheny compositions in big-band arrangements by Bob Curnow and guitarist Szabó Illés. Two shows: 18:30 and 21:00.", "why": "Big-band jazz", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/mao-meets-the-masters-szabo-illes-meets-pat-metheny-1830", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-21", "endDate": "2026-10-21", "start": "2026-10-21T18:30:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-22|grencsoparadoxfour", "title": "Grencsó Paradox Four", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["free-jazz", "improvisation", "hungarian"], "summary": "Free-music veteran Grencsó István with composer-keyboardist Dukay Barnabás, Bolcsó Bálint on electronics and percussionist Miklós Szilveszter, in freely improvised music.", "why": "Free jazz", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/grencso-paradox-four", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-22", "endDate": "2026-10-22", "start": "2026-10-22T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-28|mahallswelltokarkugelusuade", "title": "Mahall – Swell – Tokar – Kugel (US/UA/DE)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["free-jazz", "avant-garde", "international"], "summary": "Free-jazz quartet of German reedist Rudi Mahall (replacing Joe McPhee), US trombonist Steve Swell, Ukrainian bassist Mark Tokar and German drummer Klaus Kugel.", "why": "International free-jazz quartet", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/mcphee-swell-tokar-kugel", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-28", "endDate": "2026-10-28", "start": "2026-10-28T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-29|qiyan", "title": "Qiyan", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["ethno-jazz", "arab-andalusian", "jewish"], "summary": "Ajtai Péter's band builds ethno-jazz on the Jewish-Arab music of the Caliphate of Córdoba (the qiyan singer tradition), with Carpathian Basin influences.", "why": "Ethno-jazz based on a rare foreign tradition", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/qiyan-2610", "featured": true, "places": [], "ongoing": false, "startDate": "2026-10-29", "endDate": "2026-10-29", "start": "2026-10-29T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-30|newjazzfromfinlandtimolassytriofi", "title": "New Jazz From Finland | Timo Lassy Trio (FI)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "finnish", "saxophone"], "summary": "Finnish saxophonist Timo Lassy's trio (We Jazz Records) plays groove jazz with raw improvisation.", "why": "Nordic jazz", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/new-jazz-from-finland-timo-lassy-trio-fi", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-30", "endDate": "2026-10-30", "start": "2026-10-30T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-10-31|newjazzfromfinlandalexituomarilaquartetfino", "title": "New Jazz From Finland | Alexi Tuomarila Quartet (FI/NO)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "finnish", "nordic"], "summary": "Finnish pianist Alexi Tuomarila, long-time sideman of Tomasz Stanko, leads a quartet with Bendik Hofseth, Markku Ounaskari and Mikael Saastamoinen in his own compositions.", "why": "Nordic jazz", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/new-jazz-from-finland-alexi-tuomarila-quartet", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-31", "endDate": "2026-10-31", "start": "2026-10-31T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-11-03|maolegendasalbumokjohncoltrane100johncoltranestandardcoltrane", "title": "MAO Legendás Albumok – John Coltrane 100 | John Coltrane: Standard Coltrane", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "coltrane", "tribute"], "summary": "Modern Art Orchestra soloists recreate Coltrane's Standard Coltrane album, treating the standards as open forms. Part of the Coltrane centenary series.", "why": "Jazz; Coltrane centenary series", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/mao-legendas-albumok-john-coltrane-100-john-coltrane-standard-coltrane", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-03", "endDate": "2026-11-03", "start": "2026-11-03T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-11-04|negyessybarnabasquartetfeatavedjanos", "title": "Négyessy Barnabás Quartet feat. Ávéd János", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "hungarian"], "summary": "Négyessy Barnabás's quartet with guest Ávéd János; details to be announced.", "why": "Jazz", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/negyessy-barnabas-quartet-feat-aved-janos", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-04", "endDate": "2026-11-04", "start": "2026-11-04T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-11-07|szabodanieltrio", "title": "Szabó Dániel Trió", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "trio", "hungarian"], "summary": "Szabó Dániel's trio with Gyányi Marcell and Szabó Dániel Ferenc plays his story-like compositions mixing jazz, Afro-American rhythms and Central-Eastern European classical and folk idioms.", "why": "Jazz", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/szabo-daniel-trio-2611", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-07", "endDate": "2026-11-07", "start": "2026-11-07T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-11-11|nemethbendeguzquartetvendegmikegotthard", "title": "Németh Bendegúz Quartet, vendég: Mike Gotthard", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "fusion", "funk", "blues"], "summary": "Young Budapest fusion quartet (BMC special prize at the 2026 Müpa Jazz Showcase) mixing groove, funk, blues and rock energy with jazz improvisation; guest Mike Gotthard.", "why": "Jazz fusion with blues; young band", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/nemeth-bendeguz-quartet-vendeg-mike-gotthard", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-11", "endDate": "2026-11-11", "start": "2026-11-11T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-11-12|polskajazzonequartetpl", "title": "Polska Jazz | O.N.E. Quartet (PL)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "polish"], "summary": "Polish jazz quartet in the Polska Jazz series; details to be announced.", "why": "Polish jazz", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/polska-jazz-one-quartet-pl", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-12", "endDate": "2026-11-12", "start": "2026-11-12T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-11-13|polskajazzninjaepiskopatpl", "title": "Polska Jazz | Ninja Episkopat (PL)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "polish"], "summary": "Polish band Ninja Episkopat in the Polska Jazz series; details to be announced.", "why": "Polish jazz", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/polska-jazz-ninja-episkopat-pl", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-13", "endDate": "2026-11-13", "start": "2026-11-13T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-11-14|polskajazzmaseckitsalikovpieniazekmonkpl", "title": "Polska Jazz | Masecki – Tsalikov – Pieniążek: Monk (PL)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "polish", "monk"], "summary": "Polish trio Masecki, Tsalikov and Pieniążek with a programme titled 'Monk' (Polska Jazz series); details to be announced.", "why": "Polish jazz", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/polska-jazz-masecki-tsalikov-pieniazek-monk-pl", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-14", "endDate": "2026-11-14", "start": "2026-11-14T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-11-18|catalanjazzontourclaralaitriocat", "title": "Catalan Jazz on Tour | Clara Lai Trio (CAT)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "piano-trio", "catalan", "experimental"], "summary": "Barcelona-based pianist Clara Lai's trio with Àlex Reviriego and Oriol Roca: energetic yet contemplative improvised music with aleatoric and noise elements.", "why": "Catalan jazz, rarely heard here", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/catalan-jazz-on-tour-clara-lai-trio-cat", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-18", "endDate": "2026-11-18", "start": "2026-11-18T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-11-19|borbelymuhelyfeatlewtabackinhuus", "title": "Borbély Műhely, feat. Lew Tabackin (HU/US)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "hungarian", "american"], "summary": "Borbély Műhely with US guest Lew Tabackin; details to be announced.", "why": "Jazz with a US guest", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/borbely-muhely-feat-lew-tabackin-huus", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-19", "endDate": "2026-11-19", "start": "2026-11-19T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-11-20|lukacsmikloscimbiozistrio", "title": "Lukács Miklós Cimbiózis Trió", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "cimbalom", "trio"], "summary": "Cimbalom virtuoso Lukács Miklós with Orbán György (bass) and Baló István (drums) plays original, chamber-like jazz compositions.", "why": "Jazz on an unusual instrument (cimbalom)", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/cimbiozis-trio-2611", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-20", "endDate": "2026-11-20", "start": "2026-11-20T20:00:00", "allDay": false}, {"id": "opus-jazz-club|2026-11-21|tombourgeoisquartetfeatcourtoisharcsalilifrbehu", "title": "Tom Bourgeois Quartet feat. Courtois & Harcsa: Lili (FR/BE/HU)", "venue": "opus-jazz-club", "venueName": "Opus Jazz Club (BMC)", "category": "music", "tags": ["jazz", "french", "belgian", "lili-boulanger"], "summary": "Tom Bourgeois's Belgium-based quartet gives jazz interpretations of Lili Boulanger's music, with cellist Vincent Courtois and singer Harcsa Veronika.", "why": "French/Belgian jazz", "price": null, "language": null, "url": "https://opusjazzclub.hu/koncertek/tom-bourgeois-quartet-feat-courtois-harcsa-lili-frbehu", "featured": true, "places": [], "ongoing": false, "startDate": "2026-11-21", "endDate": "2026-11-21", "start": "2026-11-21T20:00:00", "allDay": false}, {"id": "zenehaza|2026-09-25|15evesajazzaj", "title": "15 éves a JazzaJ", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["jazz", "experimental", "anniversary"], "summary": "Programme marking 15 years of JazzaJ, with jazz, experimental and contemporary music in several spaces of the House.", "why": "Jazz", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/15-eves-a-jazzaj-1", "featured": false, "places": [], "ongoing": false, "startDate": "2026-09-25", "endDate": "2026-09-25", "start": "2026-09-25T13:00:00", "allDay": false}, {"id": "zenehaza|2026-09-26|leakalappaldankobalint", "title": "Le a kalappal! – Dankó Bálint", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["street-music", "traditional", "world-music"], "summary": "Free open-air street-music gig by Dankó Bálint around the House, in the 'Utcazene a szabadban' (Street music outdoors) series; listed as traditional/world music.", "why": "Borderline: small free street gig, traditional/world music of unstated origin", "price": "free", "language": null, "url": "https://zenehaza.hu/esemeny/le-a-kalappal-danko-balint", "featured": false, "places": [], "ongoing": false, "startDate": "2026-09-26", "endDate": "2026-09-26", "start": "2026-09-26T16:00:00", "allDay": false}, {"id": "zenehaza|2026-09-26|bluesunshowcaseshakartriohanussenkozmodgnorklivevavab2bazami", "title": "Blue Sun Showcase: Shakar Trio, Hanussen & Kozmo D, Gnork (live), Vava b2b Azami", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["jazz", "electronic", "showcase"], "summary": "Free open-air showcase on the outdoor stage with Shakar Trio, Hanussen & Kozmo D, Gnork (live) and a Vava b2b Azami DJ set; listed as jazz, electronic and DJ music.", "why": "Borderline: jazz/electronic showcase of small acts", "price": "free", "language": null, "url": "https://zenehaza.hu/esemeny/blue-sun-showcase-shakar-trio-hanussen-kozmo-d-gnork-vava-b2b-azami", "featured": false, "places": [], "ongoing": false, "startDate": "2026-09-26", "endDate": "2026-09-26", "start": "2026-09-26T16:00:00", "allDay": false}, {"id": "zenehaza|2026-09-27|dome021platonkarataevnapkotozo", "title": "DOME_021 Platon Karataev: Napkötöző", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["indie-folk", "hungarian", "dome"], "summary": "Platon Karataev's 'Napkötöző' in the Hangdóm, the House's sound dome; listed as a pop concert.", "why": "Borderline: Hungarian indie-folk band, labelled pop", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/dome-021-platon-karataev-napkotozo", "featured": false, "places": [], "ongoing": false, "startDate": "2026-09-27", "endDate": "2026-09-27", "start": "2026-09-27T15:00:00", "allDay": false}, {"id": "zenehaza|2026-09-30|cantesmalditospedrodediosantoniofernandezesp", "title": "Cantes Malditos – Pedro de Dios & Antonio Fernandez (ESP)", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["spanish", "world-music", "blues"], "summary": "Spanish duo Pedro de Dios and Antonio Fernandez on the outdoor stage; listed as traditional/world music and blues.", "why": "Rare Spanish traditional/blues act", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/cantes-malditos-pedro-de-dios-antonio-fernadez-esp", "featured": true, "places": [], "ongoing": false, "startDate": "2026-09-30", "endDate": "2026-09-30", "start": "2026-09-30T20:00:00", "allDay": false}, {"id": "zenehaza|2026-10-03|galdepazabateberihuntheaddiskenprojectisr", "title": "Gal De Paz | Abate Berihun & The Addis Ken Project (ISR)", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["world-music", "israeli"], "summary": "Israeli double bill in the concert hall: Gal De Paz, and Abate Berihun & The Addis Ken Project; listed as world music and pop.", "why": "Rare world-music act from abroad", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/gal-de-paz-abate-berihun-the-addis-ken-project-isr", "featured": true, "places": [], "ongoing": false, "startDate": "2026-10-03", "endDate": "2026-10-03", "start": "2026-10-03T19:30:00", "allDay": false}, {"id": "zenehaza|2026-10-04|kerekesband30vadhajtas", "title": "Kerekes Band 30: Vadhajtás", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["folk-rock", "hungarian", "anniversary"], "summary": "Kerekes Band's 30th-anniversary concert 'Vadhajtás' in the concert hall; listed as traditional/world music.", "why": "Hungarian folk-rock band (Kerekes Band named in preferences)", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/kerekes-band-30-vadhajtas", "featured": true, "places": [], "ongoing": false, "startDate": "2026-10-04", "endDate": "2026-10-04", "start": "2026-10-04T19:00:00", "allDay": false}, {"id": "zenehaza|2026-10-10|muzsakollektivabiroeszterlabasvikiesszirtesedinamokusestje", "title": "Múzsa Kollektíva – Bíró Eszter, Lábas Viki és Szirtes Edina Mókus estje", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["vocal", "crossover", "hungarian"], "summary": "Evening of the Múzsa Kollektíva with Bíró Eszter, Lábas Viki and Szirtes Edina Mókus in the concert hall; listed as pop and multi-arts.", "why": "Borderline: jazz/folk-leaning singers, labelled pop", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/muzsa-kollektiva-biro-eszter-labas-viki-es-szirtes-edina-mokus-estje", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-10", "endDate": "2026-10-10", "start": "2026-10-10T19:30:00", "allDay": false}, {"id": "zenehaza|2026-10-15|harcsaveronikanorathielevancsozoltan", "title": "Harcsa Veronika - Nora Thiele - Vancsó Zoltán", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["jazz", "vocal"], "summary": "Harcsa Veronika performs with Nora Thiele and Vancsó Zoltán in the concert hall; listed as pop.", "why": "Harcsa Veronika, jazz-rooted singer named in preferences", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/harcsa-veronika-nora-thiele-vancso-zoltan", "featured": true, "places": [], "ongoing": false, "startDate": "2026-10-15", "endDate": "2026-10-15", "start": "2026-10-15T19:30:00", "allDay": false}, {"id": "zenehaza|2026-10-16|bablbluzmar", "title": "Bab L' Bluz (MAR)", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["moroccan", "african", "world-music"], "summary": "Moroccan band Bab L' Bluz in the concert hall; listed as traditional/world music.", "why": "Rare African (Moroccan) band", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/bab-l-bluz-mar", "featured": true, "places": [], "ongoing": false, "startDate": "2026-10-16", "endDate": "2026-10-16", "start": "2026-10-16T19:30:00", "allDay": false}, {"id": "zenehaza|2026-10-20|muzsikusokkavehazaelociganyzeneatrillaetteremben", "title": "Muzsikusok kávéháza – Élő cigányzene a Trilla Étteremben", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["gypsy", "restaurant"], "summary": "Live gypsy music in the House's Trilla restaurant, part of the 'Muzsikusok kávéháza' (Musicians' café) series.", "why": "Gypsy music, restaurant gig", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/muzsikusok-kavehaza-elo-ciganyzene-a-trilla-etteremben-3", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-20", "endDate": "2026-10-20", "start": "2026-10-20T19:00:00", "allDay": false}, {"id": "zenehaza|2026-10-25|baloghkalmantobbhuronpendulunk", "title": "Balogh Kálmán: Több húron pendülünk", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["cimbalom", "gypsy", "traditional"], "summary": "Concert by Balogh Kálmán in the concert hall; listed as traditional/world music.", "why": "Roma cimbalom player (gypsy music)", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/balogh-kalman-tobb-huron-pendulunk", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-25", "endDate": "2026-10-25", "start": "2026-10-25T19:00:00", "allDay": false}, {"id": "zenehaza|2026-10-27|nyarleto2018vendegvargadenesfilmeszteta", "title": "Nyár (Leto, 2018) Vendég: Varga Dénes filmesztéta", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "film", "tags": ["russian", "rock", "film-club"], "summary": "Rock Film Club screening of 'Leto' (Nyár, 2018) in the pop-culture club library, with film aesthetician Varga Dénes as guest.", "why": "Borderline: rarely screened Russian film", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/nyar-leto-2018-vendeg-varga-denes-filmeszteta", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-27", "endDate": "2026-10-27", "start": "2026-10-27T19:00:00", "allDay": false}, {"id": "zenehaza|2026-10-30|inparitanceszene2", "title": "In Pari – Tánc és Zene #2", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["jazz", "dance", "crossover"], "summary": "Second evening of the In Pari dance-and-music series in the lecture hall; listed as dance, crossover and jazz.", "why": "Borderline: dance/music evening listed as jazz", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/in-pari-tanc-es-zene-2", "featured": false, "places": [], "ongoing": false, "startDate": "2026-10-30", "endDate": "2026-10-30", "start": "2026-10-30T19:00:00", "allDay": false}, {"id": "zenehaza|2026-11-03|sipeslantbereczandrasgorogmusora", "title": "Síp és lant – Berecz András görög műsora", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["greek", "folk", "traditional"], "summary": "Berecz András presents a Greek programme ('Pipe and lute') in the concert hall; listed as traditional/world music.", "why": "Foreign (Greek) folk tradition", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/sip-es-lant-berecz-andras-gorog-musora", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-03", "endDate": "2026-11-03", "start": "2026-11-03T19:30:00", "allDay": false}, {"id": "zenehaza|2026-11-07|lospiranascolszode", "title": "Los Piranas (COL) | Szodé", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["colombian", "latin-american", "world-music", "experimental"], "summary": "Colombian band Los Piranas, with Szodé, in the concert hall; listed as traditional/world and experimental music.", "why": "Rare Latin American band", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/los-piranas-col-szode", "featured": true, "places": [], "ongoing": false, "startDate": "2026-11-07", "endDate": "2026-11-07", "start": "2026-11-07T20:00:00", "allDay": false}, {"id": "zenehaza|2026-11-17|muzsikusokkavehazaelociganyzeneatrillaetteremben", "title": "Muzsikusok kávéháza - Élő cigányzene a Trilla Étteremben", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["gypsy", "restaurant"], "summary": "Live gypsy music in the House's Trilla restaurant, part of the 'Muzsikusok kávéháza' (Musicians' café) series.", "why": "Gypsy music, restaurant gig", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/muzsikusok-kavehaza-elo-ciganyzene-a-trilla-etteremben-4", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-17", "endDate": "2026-11-17", "start": "2026-11-17T19:00:00", "allDay": false}, {"id": "zenehaza|2026-11-17|aleladianeusathehacklesusa", "title": "Alela Diane (USA) | The Hackles (USA)", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["folk", "singer-songwriter", "american"], "summary": "US singer-songwriter Alela Diane, with The Hackles (USA), in the concert hall; listed as pop / singer-songwriter.", "why": "US folk singer-songwriter, labelled pop", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/alela-diane-usa", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-17", "endDate": "2026-11-17", "start": "2026-11-17T19:30:00", "allDay": false}, {"id": "zenehaza|2026-11-18|emingo", "title": "Emingó", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["jazz"], "summary": "Jazz concert by Emingó in the lecture hall.", "why": "Jazz; small act", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/emingo", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-18", "endDate": "2026-11-18", "start": "2026-11-18T19:00:00", "allDay": false}, {"id": "zenehaza|2026-11-20|moldovaidallamokesritmusokivancurteannal", "title": "Moldovai dallamok és ritmusok Ivan Curteannal", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["moldovan", "folk", "interactive"], "summary": "Interactive educational session on Moldovan melodies and rhythms with Ivan Curtean, in the Világfalu+ (World Village) series.", "why": "Folk tradition from abroad (Moldova)", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/moldovai-dallamok-es-ritmusok-ivan-curteannal", "featured": false, "places": [], "ongoing": false, "startDate": "2026-11-20", "endDate": "2026-11-20", "start": "2026-11-20T19:00:00", "allDay": false}, {"id": "zenehaza|2026-11-22|dukaelemergipsychamberorchestrajakabrolandcodrutionescugogangabrielrom", "title": "Duka Elemér & Gipsy Chamber Orchestra | Jakab Roland, Codruț Ionescu, Gogan Gabriel (ROM)", "venue": "zenehaza", "venueName": "Magyar Zene Háza", "category": "music", "tags": ["gypsy", "romanian", "orchestra"], "summary": "Duka Elemér and the Gipsy Chamber Orchestra with guests Jakab Roland, Codruț Ionescu and Gogan Gabriel (Romania); listed as traditional/world music.", "why": "Gypsy music with Romanian guests", "price": null, "language": null, "url": "https://zenehaza.hu/esemeny/duka-elemer-gipsy-chamber-orchestra-jakab-roland-codrut-ionescu-gogan-gabriel-rom", "featured": true, "places": [], "ongoing": false, "startDate": "2026-11-22", "endDate": "2026-11-22", "start": "2026-11-22T19:00:00", "allDay": false}], "manual": [{"name": "Café Zsivágó", "link": "https://www.facebook.com/profile.php?id=100063365072457&sk=events"}, {"name": "Muci – coffee & pastry", "link": "https://www.facebook.com/profile.php?id=61572563117208&sk=events"}, {"name": "Caphe by Hai Nam", "link": "https://www.facebook.com/caphe.hainambudapest/events"}, {"name": "Kelet Kávézó és Galéria", "link": "https://www.facebook.com/keletkavezo/events"}, {"name": "Csiga Café", "link": "https://www.facebook.com/cafecsiga/events"}, {"name": "Cintányéros", "link": "https://www.facebook.com/Cintanyeros/events"}, {"name": "Budapesti Kínai Kulturális Központ", "link": "https://www.facebook.com/CCCBudapest/events"}, {"name": "Tűzhely Kerámia Stúdió", "link": "https://www.instagram.com/tuzhely_studio/"}, {"name": "Goethe-Institut Budapest", "link": "https://www.goethe.de/ins/hu/hu/ver.cfm"}, {"name": "Lengyel Intézet", "link": "https://instytutpolski.pl/budapest/category/program/"}], "tags": ["jazz", "hungarian", "world-music", "experimental", "french", "gypsy", "vocal", "coltrane", "saxophone", "tribute", "free-jazz", "blues", "polish", "traditional", "folk", "hungarian-art", "19th-century", "workshop", "art", "international", "duo", "catalan", "finnish", "trio"]}</script>
+<script>
+document.documentElement.lang = 'hu';
+const DATA = JSON.parse(document.getElementById('data').textContent);
+const CATEGORY_LABELS = { music: 'Zene', theater: 'Színház', film: 'Film', exhibition: 'Kiállítás', 'food-drink': 'Gasztro',
+                          craft: 'Kézművesség', talk: 'Előadás', festival: 'Fesztivál', other: 'Egyéb' };
+const CATEGORIES = Object.keys(CATEGORY_LABELS);
+const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const color = cat => css(`--c-${cat}`);
+// Empty set / empty string = no restriction.
+const state = { q: '', cats: new Set(), tags: new Set(), venues: new Set(), from: '', to: '', period: 'all', featuredOnly: false };
+const narrow = window.matchMedia('(max-width: 820px)').matches;
+const $ = id => document.getElementById(id);
+
+function el(tag, props = {}, ...children) {
+  const node = Object.assign(document.createElement(tag), props);
+  node.append(...children.filter(c => c !== null && c !== undefined));
+  return node;
+}
+
+const isoDay = d => d.toLocaleDateString('sv');  // local YYYY-MM-DD
+const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+const today = isoDay(new Date());
+
+function matches(e) {
+  if (state.featuredOnly && !e.featured) return false;
+  if (state.from && e.endDate < state.from) return false;
+  if (state.to && e.startDate > state.to) return false;
+  if (state.cats.size && !state.cats.has(e.category)) return false;
+  if (state.venues.size && !state.venues.has(e.venue)) return false;
+  if (state.tags.size && !e.tags.some(t => state.tags.has(t))) return false;
+  if (state.q) {
+    const hay = [e.title, e.summary, e.venueName, e.tags.join(' '), ...e.places.map(p => p.name)].join(' ').toLowerCase();
+    if (!state.q.split(/\s+/).every(w => hay.includes(w))) return false;
+  }
+  return true;
+}
+
+const fmtDay = new Intl.DateTimeFormat('hu-HU', { weekday: 'short', day: 'numeric', month: 'short' });
+const fmtShort = new Intl.DateTimeFormat('hu-HU', { day: 'numeric', month: 'short' });
+const parseDay = s => new Date(s + 'T00:00:00');
+const untilText = s => `${fmtShort.format(parseDay(s)).replace(/\.$/, '')}-ig`;  // "nov. 22-ig"
+const titleOf = e => (e.featured ? '★ ' : '') + e.title;
+
+function whenText(e) {
+  if (e.startDate !== e.endDate) return `${fmtDay.format(parseDay(e.startDate))} – ${fmtDay.format(parseDay(e.endDate))}`;
+  const time = e.allDay ? e.time : e.start.slice(11, 16);
+  return fmtDay.format(parseDay(e.startDate)) + (time ? `, ${time}` : '');
+}
+
+function placeText(e) {
+  const names = e.places.map(p => p.name).filter(n => n !== e.venueName);
+  return names.length ? `${e.venueName} (${names.join(', ')})` : e.venueName;
+}
+
+function openDetails(e) {
+  $('d-title').textContent = e.title;
+  $('d-when').replaceChildren(
+    e.featured ? el('span', { className: 'badge featured', textContent: '★ Kiemelt' }) : null,
+    el('span', { className: 'badge', style: `background:${color(e.category)}` }, CATEGORY_LABELS[e.category]),
+    `${placeText(e)} · ${whenText(e)}`);
+  $('d-summary').textContent = e.summary;
+  $('d-why').textContent = e.why ? `Miért: ${e.why}` : '';
+  const facts = [['Ár', e.price], ['Nyelv', e.language], ['Címkék', e.tags.join(', ')]].filter(([, v]) => v);
+  $('d-facts').replaceChildren(...facts.flatMap(([k, v]) => [el('dt', { textContent: k }), el('dd', { textContent: v })]));
+  $('d-url').href = e.url;
+  if (map) map.closePopup();
+  $('details').showModal();
+}
+$('d-close').onclick = () => $('details').close();
+$('details').addEventListener('click', ev => { if (ev.target === $('details')) $('details').close(); });
+
+const calendar = new FullCalendar.Calendar($('calendar'), {
+  locale: 'hu',
+  initialView: narrow ? 'listMonth' : 'dayGridMonth',
+  headerToolbar: narrow ? { left: 'prev,next', center: 'title', right: 'today' }
+                        : { left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth' },
+  footerToolbar: narrow ? { center: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth' } : false,
+  buttonText: { today: 'Ma', month: 'Hónap', week: 'Hét', day: 'Nap', list: 'Lista' },
+  firstDay: 1,
+  height: 'auto',
+  dayMaxEvents: 4,
+  nowIndicator: true,
+  slotMinTime: '08:00:00',
+  defaultTimedEventDuration: '02:00',  // most events here are concerts without an end time
+  eventTimeFormat: { hour: '2-digit', minute: '2-digit', hour12: false },
+  slotLabelFormat: { hour: '2-digit', minute: '2-digit', hour12: false },
+  noEventsContent: 'Nincs a szűrésnek megfelelő program',
+  events: (info, success) => success(DATA.events.filter(e => !e.ongoing && matches(e)).map(e => ({
+    id: e.id, title: titleOf(e), start: e.start, end: e.end, allDay: e.allDay,
+    backgroundColor: color(e.category), borderColor: color(e.category), extendedProps: { data: e },
+  }))),
+  eventClick: info => { info.jsEvent.preventDefault(); openDetails(info.event.extendedProps.data); },
+  eventDidMount: info => {
+    const e = info.event.extendedProps.data;
+    info.el.title = `${e.title} — ${placeText(e)}`;
+    const titleCell = info.el.querySelector('.fc-list-event-title');
+    if (titleCell) titleCell.append(el('span', { className: 'venue', textContent: ` · ${placeText(e)}` }),
+                                    el('span', { className: 'sum', textContent: e.summary }));
+  },
+});
+
+// --- Map (Leaflet; created the first time the map tab opens) ---------------------------------------
+let map = null, markerLayer = null, fitted = false;
+
+function initMap() {
+  map = L.map('map').setView([47.4979, 19.0502], 12);
+  const theme = document.documentElement.dataset.theme;
+  const dark = theme === 'dark' || (theme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  let tileErrors = 0;
+  L.tileLayer(`https://{s}.basemaps.cartocdn.com/${dark ? 'dark_all' : 'light_all'}/{z}/{x}/{y}{r}.png`, {
+    subdomains: 'abcd', maxZoom: 19,
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> közreműködők © <a href="https://carto.com/attributions">CARTO</a>',
+  }).on('tileerror', () => { if (++tileErrors === 3) $('map-note').hidden = false; }).addTo(map);
+  markerLayer = L.layerGroup().addTo(map);
+}
+
+function renderMap() {
+  if (!map) return;
+  markerLayer.clearLayers();
+  const byPlace = new Map();
+  let missing = 0;
+  for (const e of DATA.events.filter(matches)) {
+    if (!e.places.length) { missing++; continue; }
+    for (const p of e.places) {
+      const key = `${p.lat},${p.lon}`;
+      if (!byPlace.has(key)) byPlace.set(key, { place: p, venueName: e.venueName, events: [] });
+      byPlace.get(key).events.push(e);
+    }
+  }
+  const [pin, star] = [css('--pin'), css('--star')];
+  for (const { place, venueName, events } of byPlace.values()) {
+    events.sort((a, b) => a.start.localeCompare(b.start));
+    const featured = events.some(e => e.featured);
+    const marker = L.circleMarker([place.lat, place.lon], {
+      radius: Math.min(6 + Math.sqrt(events.length) * 2.5, 18), color: '#ffffff', weight: 2,
+      fillColor: featured ? star : pin, fillOpacity: 0.9,
+    });
+    const popup = el('div', { className: 'pop' },
+      el('h4', { textContent: place.name }),
+      el('div', { className: 'sub', textContent: `${place.name !== venueName ? venueName + ' · ' : ''}${events.length} program` }),
+      el('ul', {}, ...events.map(e => el('li', { onclick: () => openDetails(e) },
+        el('span', { className: 'pw', textContent: whenText(e) }),
+        el('span', { className: 'pt', textContent: titleOf(e) })))));
+    marker.bindPopup(popup, { maxWidth: 300, minWidth: 220 });
+    marker.bindTooltip(`${place.name}: ${events.length} program`, { direction: 'top', offset: [0, -8] });
+    // Hover opens the list (the popup stays open, so the pointer can move into it and click an event).
+    marker.on('mouseover', () => { marker.closeTooltip(); marker.openPopup(); });
+    marker.addTo(markerLayer);
+  }
+  $('map-missing').textContent = missing ? `${missing} programnak nincs helye a térképen.` : '';
+  if (!fitted && byPlace.size) {
+    map.fitBounds(L.latLngBounds([...byPlace.values()].map(v => [v.place.lat, v.place.lon])), { padding: [40, 40], maxZoom: 14 });
+    fitted = true;
+  }
+}
+
+function showView(view) {
+  const onMap = view === 'map';
+  $('tab-calendar').setAttribute('aria-selected', String(!onMap));
+  $('tab-map').setAttribute('aria-selected', String(onMap));
+  $('calendar').hidden = onMap;
+  $('map-view').hidden = !onMap;
+  if (onMap) {
+    if (!map) initMap();
+    map.invalidateSize();
+    renderMap();
+  } else {
+    calendar.updateSize();
+  }
+}
+$('tab-calendar').onclick = () => showView('calendar');
+if (window.L) $('tab-map').onclick = () => showView('map');
+else $('tab-map').hidden = true;  // map library failed to load; the calendar still works
+
+// --- Featured strip, side panels, counts ------------------------------------------------------------
+function renderFeatured() {
+  const items = DATA.events.filter(e => e.featured && e.endDate >= today && matches(e))
+    .sort((a, b) => a.startDate.localeCompare(b.startDate) || a.start.localeCompare(b.start));
+  $('featured-card').hidden = !items.length;
+  $('featured').replaceChildren(...items.map(e => el('button', { className: 'fcard', onclick: () => openDetails(e) },
+    el('span', { className: 'w', textContent: e.ongoing ? `${untilText(e.endDate)}` : whenText(e) }),
+    el('span', { className: 't', textContent: e.title }),
+    el('span', { className: 'v' }, el('span', { className: 'dot', style: `background:${color(e.category)}` }), placeText(e)))));
+}
+
+function renderPanels() {
+  const ongoing = DATA.events.filter(e => e.ongoing && matches(e)).sort((a, b) => a.endDate.localeCompare(b.endDate));
+  $('ongoing').replaceChildren(...ongoing.map(e => el('li', {},
+    el('span', { className: 't', textContent: titleOf(e), onclick: () => openDetails(e) }),
+    el('span', { className: 's', textContent: `${placeText(e)} · ${e.startDate > today ? `${fmtShort.format(parseDay(e.startDate))} – ${fmtShort.format(parseDay(e.endDate))}` : untilText(e.endDate)}` }))));
+  if (!ongoing.length) $('ongoing').replaceChildren(el('li', { className: 'empty', textContent: 'Nincs találat.' }));
+  const shown = DATA.events.filter(matches).length;
+  $('count').textContent = `${shown} / ${DATA.events.length} látható`;
+}
+
+function refresh() { calendar.refetchEvents(); renderPanels(); renderFeatured(); renderMap(); }
+
+// --- Filters ------------------------------------------------------------------------------------------
+function chip(label, value, set, dotColor, n) {
+  const b = el('button', { className: 'chip' },
+    dotColor ? el('span', { className: 'dot', style: `background:${dotColor}` }) : null, label,
+    n !== undefined ? el('span', { className: 'n', textContent: n }) : null);
+  b.onclick = () => { set.has(value) ? set.delete(value) : set.add(value); b.classList.toggle('on'); refresh(); };
+  return b;
+}
+
+function periodRange(period) {
+  const now = new Date();
+  const dow = (now.getDay() + 6) % 7;  // Monday = 0
+  switch (period) {
+    case 'today': return [today, today];
+    case 'tomorrow': { const t = isoDay(addDays(now, 1)); return [t, t]; }
+    case 'weekend': return dow >= 5 ? [today, isoDay(addDays(now, 6 - dow))] : [isoDay(addDays(now, 5 - dow)), isoDay(addDays(now, 6 - dow))];
+    case 'week': return [today, isoDay(addDays(now, 6))];
+    case 'month': return [today, isoDay(addDays(now, 29))];
+    default: return ['', ''];
+  }
+}
+const PERIODS = [['all', 'Mind'], ['today', 'Ma'], ['tomorrow', 'Holnap'], ['weekend', 'Hétvége'], ['week', '7 nap'], ['month', '30 nap']];
+
+function setPeriod(period, from, to) {
+  state.period = period;
+  [state.from, state.to] = period === 'custom' ? [from, to] : periodRange(period);
+  $('from').value = state.from; $('to').value = state.to;
+  document.querySelectorAll('#periods .chip').forEach(b => b.classList.toggle('on', b.dataset.period === state.period));
+  if (state.from) calendar.gotoDate(state.from);
+  refresh();
+}
+
+function renderFilters() {
+  const countBy = key => DATA.events.reduce((m, e) => m.set(e[key], (m.get(e[key]) || 0) + 1), new Map());
+  $('periods').replaceChildren(...PERIODS.map(([id, label]) => {
+    const b = el('button', { className: 'chip' + (state.period === id ? ' on' : ''), textContent: label });
+    b.dataset.period = id;
+    b.onclick = () => setPeriod(id);
+    return b;
+  }));
+  $('featured-count').textContent = DATA.events.filter(e => e.featured).length;
+  $('featured-only').classList.toggle('on', state.featuredOnly);
+  const cats = countBy('category');
+  $('cats').replaceChildren(...CATEGORIES.filter(c => cats.has(c)).map(c => chip(CATEGORY_LABELS[c], c, state.cats, color(c), cats.get(c))));
+  $('tags').replaceChildren(...DATA.tags.map(t => chip(t, t, state.tags)));
+  const venues = [...countBy('venue')].map(([id, n]) => [id, DATA.events.find(e => e.venue === id).venueName, n])
+    .sort((a, b) => a[1].localeCompare(b[1], 'hu'));
+  $('venue-count').textContent = `(${venues.length} helyszín)`;
+  $('venues').replaceChildren(...venues.map(([id, name, n]) => {
+    const box = el('input', { type: 'checkbox' });
+    box.onchange = () => { box.checked ? state.venues.add(id) : state.venues.delete(id); refresh(); };
+    return el('label', {}, box, name, el('span', { className: 'n', textContent: n }));
+  }));
+  $('manual').replaceChildren(...DATA.manual.map(v =>
+    el('li', {}, el('a', { href: v.link, target: '_blank', rel: 'noopener', textContent: `${v.name} ↗` }))));
+  if (!DATA.manual.length) $('manual').replaceChildren(el('li', { className: 'empty', textContent: 'Nincs.' }));
+}
+
+$('q').addEventListener('input', ev => { state.q = ev.target.value.trim().toLowerCase(); refresh(); });
+['from', 'to'].forEach(id => $(id).addEventListener('change', () => setPeriod('custom', $('from').value, $('to').value)));
+$('featured-only').onclick = () => { state.featuredOnly = !state.featuredOnly; $('featured-only').classList.toggle('on', state.featuredOnly); refresh(); };
+$('reset').onclick = () => {
+  Object.assign(state, { q: '', from: '', to: '', period: 'all', featuredOnly: false });
+  $('q').value = ''; $('from').value = ''; $('to').value = '';
+  [state.cats, state.tags, state.venues].forEach(s => s.clear());
+  renderFilters(); refresh();
+};
+
+if (narrow) $('filter-card').open = false;
+renderFilters();
+renderPanels();
+renderFeatured();
+// Only now hide the plain agenda: if the calendar library failed to load, the script stopped above and the agenda stays.
+document.documentElement.classList.add('js');
+calendar.render();
+</script>
+</body>
+</html>
