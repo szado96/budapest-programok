@@ -142,7 +142,8 @@
   dialog dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 12px 0; font-size: 14px; }
   dialog dt { color: var(--muted); }
   dialog dd { margin: 0; }
-  dialog .actions { display: flex; justify-content: space-between; align-items: center; padding: 12px 22px; border-top: 1px solid var(--border); }
+  dialog .actions { display: flex; gap: 16px; justify-content: space-between; align-items: center; padding: 12px 22px; border-top: 1px solid var(--border); }
+  dialog .links { display: flex; flex-wrap: wrap; gap: 8px; }
   dialog .open { background: var(--text); color: var(--panel); padding: 7px 14px; border-radius: 6px; text-decoration: none; }
   .badge { display: inline-block; padding: 1px 8px; border-radius: 999px; color: #fff; font-size: 12px; margin-right: 6px; }
   .badge.featured { background: var(--star); color: #1f2328; }
@@ -171,7 +172,7 @@
 <body>
 <header>
   <h1>Budapesti programok</h1>
-  <span class="meta">Frissítve: 2026-10-19 16:52 · 193 program</span>
+  <span class="meta">Frissítve: 2026-10-19 17:09 · 193 program</span>
 </header>
 <section class="agenda" id="agenda">
   <p class="agenda-note">A programok egyszerű listája. Böngészőben megnyitva interaktív naptárként és térképként jelenik meg.</p>
@@ -1288,7 +1289,10 @@
     <dl id="d-facts"></dl>
   </div>
   <div class="actions">
-    <a class="open" id="d-url" target="_blank" rel="noopener">Az esemény oldala ↗</a>
+    <div class="links">
+      <a class="open" id="d-url" target="_blank" rel="noopener">Az esemény oldala ↗</a>
+      <a class="open" id="d-gcal" target="_blank" rel="noopener">Hozzáadás a Google Naptárhoz</a>
+    </div>
     <button class="link" id="d-close">Bezárás</button>
   </div>
 </dialog>
@@ -1348,16 +1352,35 @@ function placeText(e) {
   return names.length ? `${e.venueName} (${names.join(', ')})` : e.venueName;
 }
 
+const GCAL_DEFAULT_HOURS = 2;  // events without an end time
+// Google Calendar's prefilled "new event" page; the date strings are Budapest local time (ctz).
+function gcalLink(e) {
+  const compact = iso => iso.slice(0, 19).replace(/[-:]/g, '');
+  let dates;
+  if (e.allDay) {
+    dates = `${compact(e.start)}/${compact(e.end)}`;  // all-day end is already exclusive
+  } else {
+    const [y, m, d, h, min] = e.start.match(/\d+/g).map(Number);
+    const end = e.end || isoLocal(new Date(y, m - 1, d, h + GCAL_DEFAULT_HOURS, min));
+    dates = `${compact(e.start)}/${compact(end)}`;
+  }
+  const params = new URLSearchParams({ action: 'TEMPLATE', text: e.title, dates, ctz: 'Europe/Budapest',
+                                       details: `${e.summary}\n\n${e.url}`, location: placeText(e) });
+  return `https://calendar.google.com/calendar/render?${params}`;
+}
+const isoLocal = d => `${isoDay(d)}T${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}:00`;
+
 function openDetails(e) {
   $('d-title').textContent = e.title;
-  $('d-when').replaceChildren(
+  $('d-when').replaceChildren(...[
     e.featured ? el('span', { className: 'badge featured', textContent: '★ Kiemelt' }) : null,
     el('span', { className: 'badge', style: `background:${color(e.category)}` }, CATEGORY_LABELS[e.category]),
-    `${placeText(e)} · ${whenText(e)}`);
+    `${placeText(e)} · ${whenText(e)}`].filter(Boolean));
   $('d-summary').textContent = e.summary;
   const facts = [['Címkék', e.tags.join(', ')]].filter(([, v]) => v);
   $('d-facts').replaceChildren(...facts.flatMap(([k, v]) => [el('dt', { textContent: k }), el('dd', { textContent: v })]));
   $('d-url').href = e.url;
+  $('d-gcal').href = gcalLink(e);
   if (map) map.closePopup();
   $('details').showModal();
 }
